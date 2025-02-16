@@ -1,4 +1,5 @@
 #include "CommonFunc.h"
+#include "map.h"
 
 Object g_background;
 
@@ -37,7 +38,7 @@ bool initData()
 
 bool loadBackground()
 {
-	if (!g_background.loadImg("data/img/road.png", g_screen))
+	if (!g_background.loadImg("data/img/background2.png", g_screen))
 	{
 		std::cerr << "Failed to load background image!\n";
 		return false;
@@ -66,6 +67,11 @@ int main(int argc, char* argv[])
 		return -1;
 
 
+	GameMap game_map;
+
+	game_map.loadMap("map/map01.dat");
+	game_map.loadTiles(g_screen);
+
 	bool isQuit = false;
 	while (!isQuit)
 	{
@@ -81,6 +87,9 @@ int main(int argc, char* argv[])
 		SDL_RenderClear(g_screen);
 
 		g_background.Render(g_screen, NULL);
+		game_map.DrawMap(g_screen);
+
+
 
 		SDL_RenderPresent(g_screen);
 	}

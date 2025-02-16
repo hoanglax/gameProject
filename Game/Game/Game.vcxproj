@@ -134,6 +134,7 @@
     <ClCompile Include="CommonLib.h" />
     <ClCompile Include="lane.h" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="map.cpp" />
     <ClCompile Include="menu.h" />
     <ClCompile Include="object.cpp" />
   </ItemGroup>

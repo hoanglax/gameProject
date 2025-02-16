@@ -1,2 +1,3 @@
 ﻿  main.cpp
+D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(21,16): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
   Game.vcxproj -> D:\UET\LTNC\gameProject\Game\x64\Debug\Game.exe
