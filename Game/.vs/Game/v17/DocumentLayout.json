@@ -3,20 +3,32 @@
   "WorkspaceRootPath": "D:\\UET\\LTNC\\gameProject\\Game\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|D:\\UET\\LTNC\\gameProject\\Game\\Game\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|solutionrelative:Game\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|D:\\UET\\LTNC\\gameProject\\Game\\Game\\MainObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|solutionrelative:Game\\MainObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|D:\\UET\\LTNC\\gameProject\\Game\\Game\\CommonFunc.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|solutionrelative:Game\\CommonFunc.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|D:\\UET\\LTNC\\gameProject\\Game\\Game\\object.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|solutionrelative:Game\\object.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|D:\\UET\\LTNC\\gameProject\\Game\\Game\\map.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|solutionrelative:Game\\map.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|D:\\UET\\LTNC\\gameProject\\Game\\Game\\map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|solutionrelative:Game\\map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|D:\\UET\\LTNC\\gameProject\\Game\\Game\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|solutionrelative:Game\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|D:\\UET\\LTNC\\gameProject\\Game\\Game\\MainObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|solutionrelative:Game\\MainObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|D:\\UET\\LTNC\\gameProject\\Game\\Game\\object.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|solutionrelative:Game\\object.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,11 +38,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
+              "Title": "main.cpp",
+              "DocumentMoniker": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\main.cpp",
+              "RelativeDocumentMoniker": "Game\\main.cpp",
+              "ToolTip": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\main.cpp",
+              "RelativeToolTip": "Game\\main.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFUAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-02-17T06:45:07.281Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "map.cpp",
               "DocumentMoniker": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\map.cpp",
               "RelativeDocumentMoniker": "Game\\map.cpp",
@@ -39,7 +64,58 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-16T14:02:10.937Z",
-              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "object.cpp",
+              "DocumentMoniker": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\object.cpp",
+              "RelativeDocumentMoniker": "Game\\object.cpp",
+              "ToolTip": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\object.cpp",
+              "RelativeToolTip": "Game\\object.cpp",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAACoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-02-17T05:03:18.186Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "object.h",
+              "DocumentMoniker": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\object.h",
+              "RelativeDocumentMoniker": "Game\\object.h",
+              "ToolTip": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\object.h",
+              "RelativeToolTip": "Game\\object.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-02-17T04:39:20.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainObject.cpp",
+              "DocumentMoniker": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\MainObject.cpp",
+              "RelativeDocumentMoniker": "Game\\MainObject.cpp",
+              "ToolTip": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\MainObject.cpp",
+              "RelativeToolTip": "Game\\MainObject.cpp",
+              "ViewState": "AQIAAAEAAAAAAAAAAAArwA0AAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-02-17T04:38:31.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainObject.h",
+              "DocumentMoniker": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\MainObject.h",
+              "RelativeDocumentMoniker": "Game\\MainObject.h",
+              "ToolTip": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\MainObject.h",
+              "RelativeToolTip": "Game\\MainObject.h",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAABgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-02-17T04:38:13.783Z",
               "EditorCaption": ""
             },
             {
@@ -50,35 +126,9 @@
               "RelativeDocumentMoniker": "Game\\CommonFunc.h",
               "ToolTip": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\CommonFunc.h",
               "RelativeToolTip": "Game\\CommonFunc.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAASAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-02-16T17:15:04.849Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "map.h",
-              "DocumentMoniker": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\map.h",
-              "RelativeDocumentMoniker": "Game\\map.h",
-              "ToolTip": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\map.h",
-              "RelativeToolTip": "Game\\map.h",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAABUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-02-16T14:01:01.365Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "main.cpp",
-              "DocumentMoniker": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\main.cpp",
-              "RelativeDocumentMoniker": "Game\\main.cpp",
-              "ToolTip": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\main.cpp",
-              "RelativeToolTip": "Game\\main.cpp",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAAADAAAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-02-16T06:34:19.884Z",
               "EditorCaption": ""
             }
           ]

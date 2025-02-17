@@ -1,5 +1,6 @@
 #include "CommonFunc.h"
 #include "map.h"
+#include "MainObject.h"
 
 Object g_background;
 
@@ -68,9 +69,12 @@ int main(int argc, char* argv[])
 
 
 	GameMap game_map;
-
-	game_map.loadMap("map/map01.dat");
+	game_map.loadMap("map/map02.dat");
 	game_map.loadTiles(g_screen);
+
+	MainObject p_player;
+	p_player.loadImg("player/player_idle.png" , g_screen);
+	p_player.set_clips();
 
 	bool isQuit = false;
 	while (!isQuit)
@@ -81,6 +85,8 @@ int main(int argc, char* argv[])
 			{
 				isQuit = true;
 			}
+
+			p_player.HandelInputAction(g_event, g_screen);
 		}
 
 		SDL_SetRenderDrawColor(g_screen, 255, 255, 255, 255);
@@ -89,6 +95,8 @@ int main(int argc, char* argv[])
 		g_background.Render(g_screen, NULL);
 		game_map.DrawMap(g_screen);
 
+
+		p_player.Show(g_screen);
 
 
 		SDL_RenderPresent(g_screen);

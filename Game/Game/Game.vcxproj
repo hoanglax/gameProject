@@ -132,16 +132,14 @@
   <ItemGroup>
     <ClCompile Include="CommonFunc.cpp" />
     <ClCompile Include="CommonLib.h" />
-    <ClCompile Include="lane.h" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainObject.cpp" />
     <ClCompile Include="map.cpp" />
-    <ClCompile Include="menu.h" />
     <ClCompile Include="object.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="character.h" />
     <ClInclude Include="CommonFunc.h" />
-    <ClInclude Include="game.h" />
+    <ClInclude Include="MainObject.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="object.h" />
   </ItemGroup>

@@ -18,6 +18,14 @@ const int SCREEN_BPP = 64;
 #define max_map_y 40
 
 
+typedef struct Input
+{
+	int left_;
+	int right_;
+	int up_;
+	int down_;
+};
+
 typedef struct Map
 {
 	int start_x;
