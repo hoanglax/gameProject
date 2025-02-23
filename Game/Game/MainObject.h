@@ -16,12 +16,21 @@ public:
 		WALK_RIGHT = 0,
 		WALK_LEFT = 1,
 		WALK_UP = 2,
-		WALK_DOWN = 3
+		WALK_DOWN = 3,
+		RUN = 4
 	};
 	bool loadImg(string path, SDL_Renderer* screen);
 	void Show(SDL_Renderer* des);
 	void HandelInputAction(SDL_Event events, SDL_Renderer* screen);
 	void set_clips();
+	//move
+	void DoPlayer(Map& map_data);
+	void CheckToMap(Map& map_data);
+	void SetMapXY(const int map_x, const int map_y) { map_x_ = map_x; map_y_ = map_y; }
+	void CenterEntityOnMap(Map& map_data);
+	bool isRunning;
+
+	float get_y_pos() { return y_pos_; }
 
 private:
 	float x_val_;
@@ -37,6 +46,9 @@ private:
 	Input input_type_;
 	int frame_;
 	int status_;
+
+	int map_x_;
+	int map_y_;
 
 };
 

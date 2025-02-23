@@ -15,8 +15,18 @@ const int SCREEN_BPP = 64;
 
 #define TILE_SIZE 64
 #define max_map_x 16
-#define max_map_y 40
+#define max_map_y 63
 
+//graphic
+#define FPS 24
+
+//player
+#define PLAYER_MOVE_SPEED 4
+#define PLAYER_RUN_SPEED 10
+
+//threats
+#define LEFT 0
+#define RIGHT 960
 
 typedef struct Input
 {
@@ -24,6 +34,7 @@ typedef struct Input
 	int right_;
 	int up_;
 	int down_;
+	int run_;
 };
 
 typedef struct Map
@@ -37,4 +48,5 @@ typedef struct Map
 	int tile[max_map_y][max_map_x];
 	char* file_name;
 };
+
 #endif

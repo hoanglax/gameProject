@@ -1,51 +1,8 @@
 #include "CommonFunc.h"
-#include "map.h"
-#include "MainObject.h"
+
+#include "game.h"
 
 Object g_background;
-
-bool initData()
-{
-	bool success = true;
-	int ret = SDL_Init(SDL_INIT_VIDEO);
-	if (ret < 0)
-		return false;
-	else {
-		SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
-		g_window = SDL_CreateWindow("Jack qua duong",
-									SDL_WINDOWPOS_UNDEFINED,
-									SDL_WINDOWPOS_UNDEFINED,
-									SCREEN_WIDTH, SCREEN_HEIGHT,
-									SDL_WINDOW_SHOWN);
-		
-		if (g_window == NULL)
-			success = false;
-		else {
-			g_screen = SDL_CreateRenderer(g_window, -1, SDL_RENDERER_ACCELERATED);
-			SDL_SetRenderDrawColor(g_screen, 255, 255, 255, 255);
-			int imgFlags = IMG_INIT_PNG;
-			if (!(IMG_Init(imgFlags) && imgFlags))
-				success = false;
-		}
-	}
-
-	if (g_screen == NULL)
-	{
-		std::cerr << "Renderer (g_screen) is NULL!" << std::endl;
-		return false;
-	}
-	return success;
-}
-
-bool loadBackground()
-{
-	if (!g_background.loadImg("data/img/background2.png", g_screen))
-	{
-		std::cerr << "Failed to load background image!\n";
-		return false;
-	}
-	return true;
-}
 
 void Close() {
 	g_background.Free();
@@ -61,46 +18,15 @@ void Close() {
 
 int main(int argc, char* argv[])
 {
-	if (initData() == false)
+	Game game;
+
+	if (!game.init())
 		return -1;
 
-	if (loadBackground() == false)
+	if (!game.loadResources())
 		return -1;
 
-
-	GameMap game_map;
-	game_map.loadMap("map/map02.dat");
-	game_map.loadTiles(g_screen);
-
-	MainObject p_player;
-	p_player.loadImg("player/player_idle.png" , g_screen);
-	p_player.set_clips();
-
-	bool isQuit = false;
-	while (!isQuit)
-	{
-		while (SDL_PollEvent(&g_event) != 0) 
-		{
-			if (g_event.type == SDL_QUIT)
-			{
-				isQuit = true;
-			}
-
-			p_player.HandelInputAction(g_event, g_screen);
-		}
-
-		SDL_SetRenderDrawColor(g_screen, 255, 255, 255, 255);
-		SDL_RenderClear(g_screen);
-
-		g_background.Render(g_screen, NULL);
-		game_map.DrawMap(g_screen);
-
-
-		p_player.Show(g_screen);
-
-
-		SDL_RenderPresent(g_screen);
-	}
+	game.run();
 
 	return 0;
 }
