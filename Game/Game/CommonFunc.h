@@ -14,8 +14,12 @@ const int SCREEN_HEIGHT = 768;
 const int SCREEN_BPP = 64;
 
 #define TILE_SIZE 64
+#define BLANK_TILE 0
+#define BLOCKED_TILE_1 19
+#define BLOCKED_TILE_2 20
 #define max_map_x 16
-#define max_map_y 63
+#define max_map_y 80
+#define WON_TILE 4
 
 //graphic
 #define FPS 24
@@ -27,7 +31,7 @@ const int SCREEN_BPP = 64;
 //threats
 #define LEFT 0
 #define RIGHT 960
-
+#define LEFT_THREAT_NUMBER 16
 typedef struct Input
 {
 	int left_;

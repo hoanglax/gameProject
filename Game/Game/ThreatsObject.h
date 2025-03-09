@@ -35,11 +35,9 @@ public:
 	int get_height_frame() const { return height_frame_; }
 
 	void DoPlayer(Map& gMap);
+	void set_speed(float speed) { Threat_speed_ = speed; }
+	float get_speed() const { return Threat_speed_; }//for debugging
 
-	vector<string> threats_list = {
-		"car01LEFT.png",
-		"car01RIGHT.png"
-	};
 private:
 	float map_x_;
 	float map_y_;
@@ -58,6 +56,8 @@ private:
 	int height_frame_;
 	int frame_;
 	int come_back_time;
+
+	float Threat_speed_;
 };
 
 #endif // ! THREATSOBJECT_H

@@ -78,39 +78,48 @@ void ThreatObject::set_clips()
 	}
 }
 
-void ThreatObject::Show(SDL_Renderer* des , float cam_y)
+void ThreatObject::Show(SDL_Renderer* des, float cam_y)
 {
 	if (come_back_time == 0)
 	{
 		rect_.x = static_cast<int>(x_pos_);
-		rect_.y =static_cast<int>(y_pos_ - cam_y);
+		rect_.y = static_cast<int>(y_pos_ - cam_y);
 
 		frame_++;
-		if (frame_ >= 8)
-		{
+		if (frame_ >= 8) {
 			frame_ = 0;
 		}
 
 		SDL_Rect* currentClip = &frame_clip_[frame_];
 		SDL_Rect renderQuad = { rect_.x, rect_.y, width_frame_, height_frame_ };
+
+		//std::cout << "Rendering threat at (" << x_pos_ << ", " << y_pos_ << ") ";
+		//std::cout << "| Texture: " << (p_object ? "OK" : "NULL") << "\n";
+
+		if (p_object == NULL) {
+			std::cerr << "ERROR: Texture is NULL, cannot render threat!\n";
+			return;
+		}
+
 		SDL_RenderCopy(des, p_object, currentClip, &renderQuad);
 	}
 }
+
 
 
 void ThreatObject::DoPlayer(Map& gMap)
 {
 	if (come_back_time == 0)
 	{	
-		x_val_ = THREAT_SPEED;
+		x_val_ = Threat_speed_;
 		x_pos_ += x_val_ * direction_;
 		y_val_ = 0;
 
-		cout << "Threat X Position: " << x_pos_ << ", Direction: " << direction_ << endl;
+		//cout << "Threat X Position: " << x_pos_ << ", Direction: " << direction_ << endl;
 
 		if (x_pos_ < 0 || x_pos_ >= SCREEN_WIDTH)
 		{
-			come_back_time = 60;
+			come_back_time = rand() % 10;
 		}
 	}
 	else if (come_back_time > 0)
@@ -124,6 +133,8 @@ void ThreatObject::DoPlayer(Map& gMap)
 		}
 	}
 }
+
+
 
 void ThreatObject::set_direction(int dir) {
 	direction_ = dir;

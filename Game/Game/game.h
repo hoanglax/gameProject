@@ -7,6 +7,7 @@
 #include "MainObject.h"
 #include "ImpTimer.h"
 #include "ThreatsObject.h"
+#include "collision.h"
 
 class Game
 {
@@ -23,9 +24,10 @@ public:
     void clean();
 
     //threats
-    bool loadThreat();
-    void updateThreat();
-    void renderThreat();
+    bool loadThreats();
+    void updateThreats();
+    void renderThreats();
+    vector<ThreatObject*> MakeThreatList();
 
 private:
     bool isRunning;
@@ -33,6 +35,7 @@ private:
     MainObject player;
     ImpTimer fps_timer;
     ThreatObject threat;
+    vector<ThreatObject*> threats;
 };
 
 #endif // GAME_H

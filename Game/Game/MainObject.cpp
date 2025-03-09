@@ -4,8 +4,8 @@
 MainObject::MainObject()
 {
 	frame_ = 0;
-	x_pos_ = SCREEN_WIDTH/2 - TILE_SIZE;
-	y_pos_ = 0;
+	x_pos_ = SCREEN_WIDTH/2 - TILE_SIZE/2;
+	y_pos_ = SCREEN_HEIGHT/2;
 	x_val_ = 0;
 	y_val_ = 0;
 
@@ -23,6 +23,7 @@ MainObject::MainObject()
 
 	map_x_ = 0;
 	map_y_ = 0;
+
 }
 
 MainObject::~MainObject() 
@@ -281,24 +282,72 @@ void MainObject::DoPlayer(Map& map_data)
 
 void MainObject::CheckToMap(Map& map_data)
 {
-	if (x_pos_ < 0)
+	int x1 = (x_pos_ + x_val_) / TILE_SIZE;
+	int x2 = (x_pos_ + x_val_ + width_frame_) / TILE_SIZE;
+
+	int y1 = (y_pos_ + y_val_) / TILE_SIZE;
+	int y2 = (y_pos_ + y_val_ + height_frame_) / TILE_SIZE;
+
+	if (x1 >= 0 && x2 < max_map_x && y1 >= 0 && y2 < max_map_y)
 	{
-		x_pos_ = 0;  
-	}
-	else if (x_pos_ + width_frame_ > (max_map_x*TILE_SIZE))
-	{
-		x_pos_ = (max_map_x * TILE_SIZE) - width_frame_;
+
+		//check win
+		if (map_data.tile[y1][x2] == WON_TILE || map_data.tile[y2][x2] == WON_TILE ||
+			map_data.tile[y1][x2] == WON_TILE || map_data.tile[y2][x2] == WON_TILE)
+		{
+			is_won_ = true;
+		}
+
+		if (x_val_ > 0)
+		{
+			if (map_data.tile[y1][x2] == BLOCKED_TILE_1 || map_data.tile[y2][x2] == BLOCKED_TILE_1 ||
+				map_data.tile[y1][x2] == BLOCKED_TILE_2 || map_data.tile[y2][x2] == BLOCKED_TILE_2)
+			{
+				x_pos_ = x2 * TILE_SIZE - width_frame_ - 1;
+				x_val_ = 0;
+			}
+		}
+		else if (x_val_ < 0)
+		{
+			if (map_data.tile[y1][x1] == BLOCKED_TILE_1 || map_data.tile[y2][x1] == BLOCKED_TILE_1 ||
+				map_data.tile[y1][x1] == BLOCKED_TILE_2 || map_data.tile[y2][x1] == BLOCKED_TILE_2)
+			{
+				x_pos_ = (x1 + 1) * TILE_SIZE;
+				x_val_ = 0;
+			}
+		}
+
+		if (y_val_ > 0)
+		{
+			if (map_data.tile[y2][x1] == BLOCKED_TILE_1 || map_data.tile[y2][x2] == BLOCKED_TILE_1 ||
+				map_data.tile[y2][x1] == BLOCKED_TILE_2 || map_data.tile[y2][x2] == BLOCKED_TILE_2)
+			{
+				y_pos_ = y2 * TILE_SIZE - height_frame_ - 1;
+				y_val_ = 0;
+			}
+		}
+		else if (y_val_ < 0)
+		{
+			if (map_data.tile[y1][x1] == BLOCKED_TILE_1 || map_data.tile[y1][x2] == BLOCKED_TILE_1 || 
+				map_data.tile[y1][x1] == BLOCKED_TILE_2 || map_data.tile[y1][x2] == BLOCKED_TILE_2)
+			{
+				y_pos_ = (y1 + 1) * TILE_SIZE;
+				y_val_ = 0;
+			}
+		}
 	}
 
-	if (y_pos_ < 0)
-	{
-		y_pos_ = 0; 
-	}
+	if (x_pos_ < 0) 
+		x_pos_ = 0;
+	else if (x_pos_ + width_frame_ > (max_map_x * TILE_SIZE))
+		x_pos_ = (max_map_x * TILE_SIZE) - width_frame_;
+
+	if (y_pos_ < 0) 
+		y_pos_ = 0;
 	else if (y_pos_ + height_frame_ > (max_map_y * TILE_SIZE))
-	{
 		y_pos_ = (max_map_y * TILE_SIZE) - height_frame_;
-	}
 }
+
 void MainObject::CenterEntityOnMap(Map& map_data)
 {
 	map_data.start_x = x_pos_ - (SCREEN_WIDTH / 2);
@@ -311,7 +360,7 @@ void MainObject::CenterEntityOnMap(Map& map_data)
 		map_data.start_x = map_data.map_x - SCREEN_WIDTH;
 	}
 
-	map_data.start_y = y_pos_ - TILE_SIZE;
+	map_data.start_y = y_pos_ - SCREEN_HEIGHT/2;
 	if (map_data.start_y < 0)
 	{
 		map_data.start_y = 0;

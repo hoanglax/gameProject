@@ -19,6 +19,7 @@ public:
 		WALK_DOWN = 3,
 		RUN = 4
 	};
+
 	bool loadImg(string path, SDL_Renderer* screen);
 	void Show(SDL_Renderer* des);
 	void HandelInputAction(SDL_Event events, SDL_Renderer* screen);
@@ -28,9 +29,12 @@ public:
 	void CheckToMap(Map& map_data);
 	void SetMapXY(const int map_x, const int map_y) { map_x_ = map_x; map_y_ = map_y; }
 	void CenterEntityOnMap(Map& map_data);
+
 	bool isRunning;
 
 	float get_y_pos() { return y_pos_; }
+
+	bool is_won() const { return is_won_; }
 
 private:
 	float x_val_;
@@ -50,6 +54,7 @@ private:
 	int map_x_;
 	int map_y_;
 
+	bool is_won_ = false;
 };
 
 #endif 

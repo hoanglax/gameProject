@@ -6,7 +6,7 @@
 #include "MainObject.h"
 
 
-#define MAX_TILES 20
+#define MAX_TILES 30
 
 class TileMat : public Object
 {

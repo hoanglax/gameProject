@@ -1,17 +1,6 @@
 ﻿  ThreatsObject.cpp
-D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(31,16): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(40,16): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(35,16): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(44,16): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
 D:\UET\LTNC\gameProject\Game\Game\ThreatsObject.h(21,61): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
 D:\UET\LTNC\gameProject\Game\Game\ThreatsObject.h(21,76): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
-  game.cpp
-D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(31,16): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(40,16): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-D:\UET\LTNC\gameProject\Game\Game\ThreatsObject.h(21,61): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\ThreatsObject.h(21,76): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
-  main.cpp
-D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(31,16): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(40,16): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-D:\UET\LTNC\gameProject\Game\Game\ThreatsObject.h(21,61): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\ThreatsObject.h(21,76): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
-  Generating Code...
   Game.vcxproj -> D:\UET\LTNC\gameProject\Game\x64\Debug\Game.exe
