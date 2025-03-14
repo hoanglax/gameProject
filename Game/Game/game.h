@@ -22,19 +22,21 @@ public:
     void update();
     void render();
     void clean();
+    void checkCollisions();
+    bool CheckCollision(const SDL_Rect& a ,const SDL_Rect& b);
 
     //threats
     bool loadThreats();
     void updateThreats();
     void renderThreats();
     vector<ThreatObject*> MakeThreatList();
-
+    
 private:
     bool isRunning;
     GameMap gameMap;
     MainObject player;
     ImpTimer fps_timer;
-    ThreatObject threat;
+    //threats
     vector<ThreatObject*> threats;
 };
 

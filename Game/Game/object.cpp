@@ -36,6 +36,8 @@ bool Object::loadImg(string path, SDL_Renderer* screen)
 	{
 		rect_.w = loadSurface->w;
 		rect_.h = loadSurface->h;
+		width_frame_ = rect_.w / 8 - 16;
+		height_frame_ = rect_.h - 16;
 	}
 
 	SDL_FreeSurface(loadSurface);
@@ -60,4 +62,15 @@ void Object::Free()
 		rect_.w = 0;
 		rect_.h = 0;
 	}
+}
+
+SDL_Rect Object::GetRectFrame()
+{
+	SDL_Rect rect;
+	rect.x = rect_.x;
+	rect.y = rect_.y;
+	rect.w = width_frame_;
+	rect.h = height_frame_;
+
+	return rect;
 }

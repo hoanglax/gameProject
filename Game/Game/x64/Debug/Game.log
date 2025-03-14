@@ -1,6 +1,18 @@
-﻿  ThreatsObject.cpp
-D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(35,16): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(44,16): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+﻿  game.cpp
+D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(34,16): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(43,16): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
 D:\UET\LTNC\gameProject\Game\Game\ThreatsObject.h(21,61): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
 D:\UET\LTNC\gameProject\Game\Game\ThreatsObject.h(21,76): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
+D:\UET\LTNC\gameProject\Game\Game\game.cpp(166,52): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+D:\UET\LTNC\gameProject\Game\Game\game.cpp(168,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\UET\LTNC\gameProject\Game\Game\game.cpp(171,32): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\UET\LTNC\gameProject\Game\Game\game.cpp(191,53): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+D:\UET\LTNC\gameProject\Game\Game\game.cpp(193,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\UET\LTNC\gameProject\Game\Game\game.cpp(196,32): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  main.cpp
+D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(34,16): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(43,16): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+D:\UET\LTNC\gameProject\Game\Game\ThreatsObject.h(21,61): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
+D:\UET\LTNC\gameProject\Game\Game\ThreatsObject.h(21,76): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
+  Generating Code...
   Game.vcxproj -> D:\UET\LTNC\gameProject\Game\x64\Debug\Game.exe

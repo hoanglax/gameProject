@@ -9,6 +9,8 @@ protected:
 	SDL_Texture* p_object;
 	SDL_Rect rect_;
 
+	int width_frame_;
+	int height_frame_;
 public:
 	Object();
 	~Object();
@@ -29,6 +31,8 @@ public:
 	virtual bool loadImg(string path, SDL_Renderer* screen);
 	void Render(SDL_Renderer* des, const SDL_Rect* clip = NULL);
 	void Free();
+
+	SDL_Rect GetRectFrame();
 
 };
 

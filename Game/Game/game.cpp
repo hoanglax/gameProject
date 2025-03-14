@@ -8,7 +8,7 @@ bool initData()
         return false;
     else {
         SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
-        g_window = SDL_CreateWindow("Meo beo thic mcdonald",
+        g_window = SDL_CreateWindow("Mell bell don't like vegatable",
             SDL_WINDOWPOS_UNDEFINED,
             SDL_WINDOWPOS_UNDEFINED,
             SCREEN_WIDTH, SCREEN_HEIGHT,
@@ -33,15 +33,6 @@ bool initData()
     return success;
 }
 
-bool loadBackground()
-{
-    if (!g_background.loadImg("data/img/background.png", g_screen))
-    {
-        std::cerr << "Failed to load background image!\n";
-        return false;
-    }
-    return true;
-}
 
 Game::Game()
 {
@@ -62,9 +53,6 @@ bool Game::init()
 
 bool Game::loadResources()
 {
-    if (!loadBackground())
-    return false;
-
     gameMap.loadMap("map/map02.dat");
     gameMap.loadTiles(g_screen);
 
@@ -74,7 +62,6 @@ bool Game::loadResources()
 
     if (!loadThreats())
         return false;
-
 
     return true;
 }
@@ -120,7 +107,7 @@ void Game::update()
     gameMap.SetMap(map_data);
     updateThreats();
     renderThreats();
-
+    checkCollisions();
     if (player.is_won())
     {
         cerr << "YOU WON" << endl;
@@ -206,18 +193,15 @@ vector<ThreatObject*> Game::MakeThreatList()
             p_threat_right->set_start_y(7 * TILE_SIZE + i * 4 * TILE_SIZE);
             p_threat_right->set_direction(-1);
 
-            float threat_speed = THREAT_SPEED + rand() % 50; // Cùng logic tốc độ
+            float threat_speed = THREAT_SPEED + rand() % 50; 
             p_threat_right->set_speed(threat_speed);
 
-            list_threats.push_back(p_threat_right);
+            list_threats.push_back(p_threat_right); 
         }
     }
 
     return list_threats;
 }
-
-
-
 
 
 //render
@@ -226,13 +210,116 @@ void Game::render()
     SDL_SetRenderDrawColor(g_screen, 255, 255, 255, 255);
     SDL_RenderClear(g_screen);
 
-    g_background.Render(g_screen, NULL);
     gameMap.DrawMap(g_screen);
     player.Show(g_screen);
     renderThreats(); // Hiển thị threats
-
+    
     SDL_RenderPresent(g_screen);
 }
+
+void Game::checkCollisions()
+{
+    SDL_Rect playerRect = player.GetRectFrame();
+
+    for (auto threat : threats)
+    {
+        SDL_Rect threatRect = threat->GetRectFrame();
+
+        if (CheckCollision(playerRect, threatRect))
+        {
+            cerr << "Meo beo da chet =[[\n";
+        }
+    }
+}
+
+bool Game::CheckCollision(const SDL_Rect& object1, const SDL_Rect& object2)
+{
+    int left_a = object1.x;
+    int right_a = object1.x + object1.w;
+    int top_a = object1.y;
+    int bottom_a = object1.y + object1.h;
+
+    int left_b = object2.x;
+    int right_b = object2.x + object2.w;
+    int top_b = object2.y;
+    int bottom_b = object2.y + object2.h;
+
+    // Case 1: size object 1 < size object 2
+    if (left_a > left_b && left_a < right_b)
+    {
+        if (top_a > top_b && top_a < bottom_b)
+        {
+            return true;
+        }
+    }
+
+    if (left_a > left_b && left_a < right_b)
+    {
+        if (bottom_a > top_b && bottom_a < bottom_b)
+        {
+            return true;
+        }
+    }
+
+    if (right_a > left_b && right_a < right_b)
+    {
+        if (top_a > top_b && top_a < bottom_b)
+        {
+            return true;
+        }
+    }
+
+    if (right_a > left_b && right_a < right_b)
+    {
+        if (bottom_a > top_b && bottom_a < bottom_b)
+        {
+            return true;
+        }
+    }
+
+    // Case 2: size object 1 < size object 2
+    if (left_b > left_a && left_b < right_a)
+    {
+        if (top_b > top_a && top_b < bottom_a)
+        {
+            return true;
+        }
+    }
+
+    if (left_b > left_a && left_b < right_a)
+    {
+        if (bottom_b > top_a && bottom_b < bottom_a)
+        {
+            return true;
+        }
+    }
+
+    if (right_b > left_a && right_b < right_a)
+    {
+        if (top_b > top_a && top_b < bottom_a)
+        {
+            return true;
+        }
+    }
+
+    if (right_b > left_a && right_b < right_a)
+    {
+        if (bottom_b > top_a && bottom_b < bottom_a)
+        {
+            return true;
+        }
+    }
+
+    // Case 3: size object 1 = size object 2
+    if (top_a == top_b && right_a == right_b && bottom_a == bottom_b)
+    {
+        return true;
+    }
+
+    return false;
+}
+
+
 
 void Game::clean()
 {

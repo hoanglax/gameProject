@@ -30,8 +30,6 @@ public:
 	void SetMapXY(const int map_x, const int map_y) { map_x_ = map_x; map_y_ = map_y; }
 	void CenterEntityOnMap(Map& map_data);
 
-	bool isRunning;
-
 	float get_y_pos() { return y_pos_; }
 
 	bool is_won() const { return is_won_; }
@@ -53,7 +51,7 @@ private:
 
 	int map_x_;
 	int map_y_;
-
+	bool isRunning;
 	bool is_won_ = false;
 };
 

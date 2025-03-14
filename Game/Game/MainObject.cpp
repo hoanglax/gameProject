@@ -42,6 +42,7 @@ bool MainObject::loadImg(string path, SDL_Renderer* screen)
 	return ret;
 }
 
+
 void MainObject::set_clips()
 {
 	if (width_frame_ > 0 && height_frame_ > 0)
@@ -298,6 +299,7 @@ void MainObject::CheckToMap(Map& map_data)
 			is_won_ = true;
 		}
 
+		//check blocked tile
 		if (x_val_ > 0)
 		{
 			if (map_data.tile[y1][x2] == BLOCKED_TILE_1 || map_data.tile[y2][x2] == BLOCKED_TILE_1 ||

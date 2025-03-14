@@ -2,20 +2,6 @@
 
 #include "game.h"
 
-Object g_background;
-
-void Close() {
-	g_background.Free();
-	SDL_DestroyRenderer(g_screen);
-	g_screen = NULL;
-
-	SDL_DestroyWindow(g_window);
-	g_window = NULL;
-
-	IMG_Quit();
-	SDL_Quit();
-}
-
 int main(int argc, char* argv[])
 {
 	Game game;
