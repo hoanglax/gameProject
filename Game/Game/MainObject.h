@@ -33,6 +33,7 @@ public:
 	float get_y_pos() { return y_pos_; }
 
 	bool is_won() const { return is_won_; }
+	void resetPosition();
 
 private:
 	float x_val_;

@@ -293,7 +293,7 @@ void MainObject::CheckToMap(Map& map_data)
 	{
 
 		//check win
-		if (map_data.tile[y1][x2] == WON_TILE || map_data.tile[y2][x2] == WON_TILE ||
+		if (map_data.tile[y1][x1] == WON_TILE || map_data.tile[y2][x2] == WON_TILE ||
 			map_data.tile[y1][x2] == WON_TILE || map_data.tile[y2][x2] == WON_TILE)
 		{
 			is_won_ = true;
@@ -373,4 +373,20 @@ void MainObject::CenterEntityOnMap(Map& map_data)
 	}
 }
 
+void MainObject::resetPosition()
+{
+	x_pos_ = SCREEN_WIDTH / 2 - TILE_SIZE / 2;
+	y_pos_ = SCREEN_HEIGHT / 2;
+	x_val_ = 0;
+	y_val_ = 0;
 
+	status_ = -1;
+	isRunning = false;
+	is_won_ = false;
+
+	input_type_.left_ = 0;
+	input_type_.right_ = 0;
+	input_type_.up_ = 0;
+	input_type_.down_ = 0;
+	input_type_.run_ = 0;
+}

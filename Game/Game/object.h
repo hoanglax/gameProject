@@ -1,6 +1,7 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 #include "CommonLib.h"
+#include "CommonFunc.h"
 
 class Object
 {

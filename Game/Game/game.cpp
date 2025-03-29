@@ -55,6 +55,7 @@ bool Game::loadResources()
 {
     gameMap.loadMap("map/map02.dat");
     gameMap.loadTiles(g_screen);
+    heart_texture = IMG_LoadTexture(g_screen, "player/heart.png");
 
     if (!player.loadImg("player/player_idle.png", g_screen))
         return false;
@@ -63,6 +64,13 @@ bool Game::loadResources()
     if (!loadThreats())
         return false;
 
+    if (!heart_texture)
+    {
+        cerr << "Fail to load heart image!";
+        return false;
+    }
+
+        
     return true;
 }
 
@@ -83,6 +91,36 @@ void Game::run()
             int delay_time = time_per_frame - real_imp_time;
             if (delay_time >= 0)
                 SDL_Delay(delay_time);
+        }
+
+        if (life == 0)
+        {   
+            //g_time.paused();
+            int action = handleGameOver();
+            if (action == EXIT)
+            {
+                isRunning = false;
+                return;
+            }
+            else if (action == RESTART)
+            {   
+                //g_time.unpaused();
+                restartGame(); 
+            }
+        }
+
+        if (player.is_won())
+        {
+            int action = handlePlayerWon();
+            if (action == EXIT)
+            {
+                isRunning = false;
+                return;
+            }
+            else if (action == RESTART)
+            {
+                restartGame();
+            }
         }
     }
 }
@@ -108,10 +146,6 @@ void Game::update()
     updateThreats();
     renderThreats();
     checkCollisions();
-    if (player.is_won())
-    {
-        cerr << "YOU WON" << endl;
-    }
 }
 
 //threats
@@ -143,6 +177,7 @@ void Game::updateThreats()
 
 vector<ThreatObject*> Game::MakeThreatList()
 {
+    srand(time(0));
     vector<ThreatObject*> list_threats;
     vector<string> threatFiles_left = { "threats/car01_left.png", "threats/car02_left.png", "threats/car03_left.png" };
     vector<string> threatFiles_right = { "threats/car01_right.png", "threats/car02_right.png", "threats/car03_right.png" };
@@ -212,11 +247,25 @@ void Game::render()
 
     gameMap.DrawMap(g_screen);
     player.Show(g_screen);
-    renderThreats(); // Hiển thị threats
+    renderLife();
+    renderThreats(); 
+
     
     SDL_RenderPresent(g_screen);
 }
+void Game::renderLife()
+{
+    int start_X = SCREEN_WIDTH - 40;
+    int start_Y = 10;
 
+    for (int i = 0; i < life; i++)
+    {
+        SDL_Rect hearRect = { start_X - i * 35 , start_Y , 30 , 30 };
+        SDL_RenderCopy(g_screen, heart_texture, NULL, &hearRect);
+    }
+}
+
+//check Collisions
 void Game::checkCollisions()
 {
     SDL_Rect playerRect = player.GetRectFrame();
@@ -225,9 +274,19 @@ void Game::checkCollisions()
     {
         SDL_Rect threatRect = threat->GetRectFrame();
 
-        if (CheckCollision(playerRect, threatRect))
+        if (CheckCollision(playerRect, threatRect) && !isInvincible)
         {
-            cerr << "Meo beo da chet =[[\n";
+            life--;
+            cerr << "Meo beo bi mat mot mang\n";
+
+            isInvincible = true;
+            invincibleTimer.start();
+        }
+
+        if (isInvincible && invincibleTimer.get_ticks() >= 1000)
+        {
+            isInvincible = false;
+            invincibleTimer.stop();
         }
     }
 }
@@ -318,8 +377,72 @@ bool Game::CheckCollision(const SDL_Rect& object1, const SDL_Rect& object2)
 
     return false;
 }
+//game over
+int Game::handleGameOver()
+{
+    GameOverScreen gameOver(g_screen);
+    if (!gameOver.init("data/GameOver.png"))
+    {
+        cerr << "Error: Fail to load game over screen\n";
+        return EXIT;  // Mặc định thoát nếu không load được
+    }
 
+    bool gameOverRunning = true;
+    int action = NONE;
 
+    while (gameOverRunning)
+    {
+        action = gameOver.handleEvent();
+
+        SDL_RenderClear(g_screen);
+        gameOver.render();
+        SDL_RenderPresent(g_screen);
+
+        if (action == RESTART || action == EXIT)
+        {
+            cout << "Game Over action: " << action << endl;
+            gameOverRunning = false;
+        }
+    }
+
+    return action;
+}
+
+int Game::handlePlayerWon()
+{
+    WonScreen won_screen(g_screen);
+    if (!won_screen.init("data/won.png"))
+    {
+        cerr << "Error: Fail to load game over screen\n";
+        return EXIT;
+    }
+
+    bool is_playe_won = true;
+    int action = NONE;
+
+    while (is_playe_won)
+    {
+        action = won_screen.handleEvent();
+
+        SDL_RenderClear(g_screen);
+        won_screen.render();
+        SDL_RenderPresent(g_screen);
+
+        if (action == RESTART || action == EXIT)
+        {
+            cout << "Game Over action: " << action << endl;
+            is_playe_won = false;
+        }
+    }
+    return action;
+}
+void Game::restartGame()
+{
+    life = PLAYER_LIFE;
+    player.resetPosition();
+    
+    
+}
 
 void Game::clean()
 {
@@ -338,7 +461,6 @@ void Game::clean()
 
 
     IMG_Quit();
-
     SDL_Quit();
 
     std::cout << "Game cleaned successfully!" << std::endl;

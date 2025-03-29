@@ -109,7 +109,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>E:\SDL\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -130,7 +130,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="collision.cpp" />
     <ClCompile Include="CommonFunc.cpp" />
     <ClCompile Include="CommonLib.h" />
     <ClCompile Include="game.cpp" />
@@ -138,17 +137,20 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainObject.cpp" />
     <ClCompile Include="map.cpp" />
+    <ClCompile Include="Music.cpp" />
     <ClCompile Include="object.cpp" />
+    <ClCompile Include="menu.cpp" />
     <ClCompile Include="ThreatsObject.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="collision.h" />
     <ClInclude Include="CommonFunc.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="ImpTimer.h" />
     <ClInclude Include="MainObject.h" />
     <ClInclude Include="map.h" />
+    <ClInclude Include="Music.h" />
     <ClInclude Include="object.h" />
+    <ClInclude Include="menu.h" />
     <ClInclude Include="ThreatsObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

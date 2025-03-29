@@ -117,7 +117,7 @@ void ThreatObject::DoPlayer(Map& gMap)
 
 		//cout << "Threat X Position: " << x_pos_ << ", Direction: " << direction_ << endl;
 
-		if (x_pos_ < 0 || x_pos_ >= SCREEN_WIDTH)
+		if (x_pos_ + width_frame_ < 0 || x_pos_ >= SCREEN_WIDTH)
 		{
 			come_back_time = rand() % 10;
 		}

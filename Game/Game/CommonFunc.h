@@ -7,6 +7,7 @@
 static SDL_Window* g_window = NULL;
 static SDL_Renderer* g_screen = NULL;
 static SDL_Event g_event;
+
 //Screen
 const int SCREEN_WIDTH = 1024;
 const int SCREEN_HEIGHT = 768;
@@ -26,11 +27,13 @@ const int SCREEN_BPP = 64;
 //player
 #define PLAYER_MOVE_SPEED 4
 #define PLAYER_RUN_SPEED 10
+#define PLAYER_LIFE 3
 
 //threats
 #define LEFT 0
 #define RIGHT 960
 #define LEFT_THREAT_NUMBER 16
+
 typedef struct Input
 {
 	int left_;

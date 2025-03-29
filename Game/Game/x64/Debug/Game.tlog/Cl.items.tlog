@@ -1,4 +1,3 @@
-D:\UET\LTNC\gameProject\Game\Game\collision.cpp;D:\UET\LTNC\gameProject\Game\Game\x64\Debug\collision.obj
 D:\UET\LTNC\gameProject\Game\Game\CommonFunc.cpp;D:\UET\LTNC\gameProject\Game\Game\x64\Debug\CommonFunc.obj
 D:\UET\LTNC\gameProject\Game\Game\CommonLib.h;D:\UET\LTNC\gameProject\Game\Game\x64\Debug\CommonLib.obj
 D:\UET\LTNC\gameProject\Game\Game\game.cpp;D:\UET\LTNC\gameProject\Game\Game\x64\Debug\game.obj
@@ -6,5 +5,7 @@ D:\UET\LTNC\gameProject\Game\Game\ImpTimer.cpp;D:\UET\LTNC\gameProject\Game\Game
 D:\UET\LTNC\gameProject\Game\Game\main.cpp;D:\UET\LTNC\gameProject\Game\Game\x64\Debug\main.obj
 D:\UET\LTNC\gameProject\Game\Game\MainObject.cpp;D:\UET\LTNC\gameProject\Game\Game\x64\Debug\MainObject.obj
 D:\UET\LTNC\gameProject\Game\Game\map.cpp;D:\UET\LTNC\gameProject\Game\Game\x64\Debug\map.obj
+D:\UET\LTNC\gameProject\Game\Game\Music.cpp;D:\UET\LTNC\gameProject\Game\Game\x64\Debug\Music.obj
 D:\UET\LTNC\gameProject\Game\Game\object.cpp;D:\UET\LTNC\gameProject\Game\Game\x64\Debug\object.obj
+D:\UET\LTNC\gameProject\Game\Game\menu.cpp;D:\UET\LTNC\gameProject\Game\Game\x64\Debug\menu.obj
 D:\UET\LTNC\gameProject\Game\Game\ThreatsObject.cpp;D:\UET\LTNC\gameProject\Game\Game\x64\Debug\ThreatsObject.obj

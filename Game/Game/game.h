@@ -7,7 +7,7 @@
 #include "MainObject.h"
 #include "ImpTimer.h"
 #include "ThreatsObject.h"
-#include "collision.h"
+#include "menu.h"
 
 class Game
 {
@@ -21,6 +21,7 @@ public:
     void handleEvents();
     void update();
     void render();
+    void restartGame();
     void clean();
     void checkCollisions();
     bool CheckCollision(const SDL_Rect& a ,const SDL_Rect& b);
@@ -30,14 +31,25 @@ public:
     void updateThreats();
     void renderThreats();
     vector<ThreatObject*> MakeThreatList();
-    
+    //player
+    void renderLife();
+
+    int handleGameOver();
+    int handlePlayerWon();
+
 private:
     bool isRunning;
+    bool isInvincible = false;
     GameMap gameMap;
     MainObject player;
     ImpTimer fps_timer;
+    ImpTimer invincibleTimer;
+    ImpTimer g_time;
     //threats
     vector<ThreatObject*> threats;
+    //player
+    int life = PLAYER_LIFE;
+    SDL_Texture* heart_texture;
 };
 
 #endif // GAME_H

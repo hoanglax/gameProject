@@ -42,7 +42,10 @@
     <ClCompile Include="ThreatsObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="collision.cpp">
+    <ClCompile Include="Music.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -68,7 +71,10 @@
     <ClInclude Include="ThreatsObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="collision.h">
+    <ClInclude Include="Music.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
