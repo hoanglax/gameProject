@@ -26,7 +26,7 @@ const int SCREEN_BPP = 64;
 
 //player
 #define PLAYER_MOVE_SPEED 4
-#define PLAYER_RUN_SPEED 10
+#define PLAYER_RUN_SPEED 6
 #define PLAYER_LIFE 3
 
 //threats

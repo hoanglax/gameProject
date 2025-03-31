@@ -6,16 +6,28 @@ Button::Button(int x , int y , int h , int w , string txt)
 	text = txt;
 }
 
-void Button::render(SDL_Renderer* renderer, TTF_Font* font)
+void Button::render(SDL_Renderer* renderer, TTF_Font* font, int mouseX, int mouseY)
 {   
-    SDL_SetRenderDrawColor(renderer, 248, 243, 217, 255);
+    SDL_Color bgColor{ 248 , 243 , 217 , 255 };
+    if (mouseX >= rect.x && mouseX <= rect.x + rect.w &&
+        mouseY >= rect.y && mouseY <= rect.y + rect.h)
+    {
+        bgColor = { 220, 200, 150, 255 }; 
+    }
+
+    SDL_SetRenderDrawColor(renderer, bgColor.r, bgColor.g, bgColor.b, bgColor.a);
     SDL_RenderFillRect(renderer, &rect);
 
-    SDL_Color textColor = { 0, 0, 0 };  
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderDrawRect(renderer, &rect);
+
+    SDL_Color textColor = { 0, 0, 0 };
     SDL_Surface* textSurface = TTF_RenderText_Solid(font, text.c_str(), textColor);
     SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
 
-    SDL_Rect textRect = { rect.x + 20, rect.y + 10, textSurface->w, textSurface->h };
+    SDL_Rect textRect = { rect.x + (rect.w - textSurface->w) / 2,
+                          rect.y + (rect.h - textSurface->h) / 2,
+                          textSurface->w, textSurface->h };
     SDL_RenderCopy(renderer, textTexture, NULL, &textRect);
 
     SDL_FreeSurface(textSurface);
@@ -31,7 +43,6 @@ StartMenu::~StartMenu()
 {
     if (font)
     {
-        cerr << "StartMenu Destructor: Closing font at " << font << "\n";
         TTF_CloseFont(font);
         font = nullptr;
     }
@@ -61,9 +72,11 @@ bool StartMenu::init(const string& path)
 void StartMenu::render()
 {
     Render(renderer, nullptr);
+    int mouseX, mouseY;
+    SDL_GetMouseState(&mouseX, &mouseY);
     for (auto& button : buttons)
     {
-        button.render(renderer, font);
+        button.render(renderer, font , mouseX , mouseY);
     }
 }
 int StartMenu::handleEvent()
@@ -73,10 +86,12 @@ int StartMenu::handleEvent()
     {
         if (e.type == SDL_QUIT) return EXIT;
 
+        int x, y;
+        SDL_GetMouseState(&x, &y);
+
         if (e.type == SDL_MOUSEBUTTONDOWN)
         {
-            int x = e.button.x;
-            int y = e.button.y;
+
             for (int i = 0; i < buttons.size(); i++)
             {
                 if (x >= buttons[i].rect.x && x <= buttons[i].rect.x + buttons[i].rect.w &&
@@ -99,6 +114,7 @@ HowToPlayScreen::~HowToPlayScreen()
 {
     if (font)
         TTF_CloseFont(font);
+    font = nullptr;
 }
 bool HowToPlayScreen::init(const string& path)
 {
@@ -120,7 +136,9 @@ bool HowToPlayScreen::init(const string& path)
 void HowToPlayScreen::render()
 {
     Render(renderer, nullptr);
-    backButton.render(renderer, font);
+    int mouseX, mouseY;
+    SDL_GetMouseState(&mouseX, &mouseY);
+    backButton.render(renderer, font , mouseX , mouseY);
 }
 int HowToPlayScreen::handleEvent()
 {
@@ -178,8 +196,12 @@ bool GameOverScreen::init(const string& path)
 void GameOverScreen::render()
 {
     Render(renderer, nullptr);
-    RestartButton.render(renderer, font);
-    ExitButton.render(renderer, font);
+
+    int mouseX, mouseY;
+    SDL_GetMouseState(&mouseX, &mouseY);
+
+    RestartButton.render(renderer, font, mouseX, mouseY);
+    ExitButton.render(renderer, font, mouseX, mouseY);
 }
 int GameOverScreen::handleEvent()  
 {
@@ -246,8 +268,12 @@ bool WonScreen::init(const string& path)
 void WonScreen::render()
 {
     Render(renderer, nullptr);
-    RestartButton.render(renderer, font);
-    ExitButton.render(renderer, font);
+
+    int mouseX, mouseY;
+    SDL_GetMouseState(&mouseX, &mouseY);
+
+    RestartButton.render(renderer, font, mouseX, mouseY);
+    ExitButton.render(renderer, font, mouseX, mouseY);
 }
 
 int WonScreen::handleEvent()
@@ -267,6 +293,80 @@ int WonScreen::handleEvent()
             {
                 cout << "Restart clicked" << endl;
                 return RESTART;
+            }
+            else if (x >= ExitButton.rect.x && x <= ExitButton.rect.x + ExitButton.rect.w &&
+                y >= ExitButton.rect.y && y <= ExitButton.rect.y + ExitButton.rect.h)
+            {
+                cout << "Exit clicked" << endl;
+                return EXIT;
+            }
+        }
+    }
+    return NONE;
+}
+
+PauseScreen::PauseScreen(SDL_Renderer* ren)
+{
+    renderer = ren;
+    font = nullptr;
+}
+PauseScreen::~PauseScreen()
+{
+    if (font)
+    {
+        TTF_CloseFont(font);
+    }
+}
+bool PauseScreen::init(const string& path)
+{
+    if (renderer == nullptr)
+    {
+        cerr << "Renderer is null (init pause screen)";
+        return false;
+    }
+    if (!loadImg(path, renderer))
+    {
+        cerr << "Fail to load pause screen img";
+        return false;
+    }
+
+    font = TTF_OpenFont("data/font.ttf", 36);
+    if (!font)
+    {
+        cerr << "Fail to load font in pause screen";
+        return false;
+    }
+    return true;
+}
+
+void PauseScreen::render()
+{
+    Render(renderer, nullptr);
+
+    int mouseX, mouseY;
+    SDL_GetMouseState(&mouseX, &mouseY);
+
+    ContinueButton.render(renderer, font, mouseX, mouseY);
+    ExitButton.render(renderer, font, mouseX, mouseY);
+}
+
+int PauseScreen::handleEvent()
+{
+    SDL_Event e;
+    while (SDL_PollEvent(&e))
+    {
+        if (e.type == SDL_QUIT) return EXIT;
+
+        if (e.type == SDL_MOUSEBUTTONDOWN)
+        {
+            int x = e.button.x;
+            int y = e.button.y;
+            cout << "Mouse click: " << x << " " << y << endl;
+            if (x >= ContinueButton.rect.x && x <= ContinueButton.rect.x + ContinueButton.rect.w &&
+                y >= ContinueButton.rect.y && y <= ContinueButton.rect.y + ContinueButton.rect.h)
+            {
+                cout << "Continue clicked" << endl;
+                return RESUME;
             }
             else if (x >= ExitButton.rect.x && x <= ExitButton.rect.x + ExitButton.rect.w &&
                 y >= ExitButton.rect.y && y <= ExitButton.rect.y + ExitButton.rect.h)

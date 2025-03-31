@@ -4,6 +4,7 @@
 #include "CommonLib.h"
 #include "CommonFunc.h"
 #include "object.h"
+#include "ImpTimer.h"
 
 class MainObject : public Object
 {
@@ -35,6 +36,16 @@ public:
 	bool is_won() const { return is_won_; }
 	void resetPosition();
 
+	SDL_Rect getHitboxRect();
+	bool is_hit = false;
+	ImpTimer hitTimer;
+
+	void take_damage()
+	{
+		is_hit = true;
+		hitTimer.start();
+	}
+
 private:
 	float x_val_;
 	float y_val_;
@@ -54,6 +65,7 @@ private:
 	int map_y_;
 	bool isRunning;
 	bool is_won_ = false;
+	
 };
 
 #endif 

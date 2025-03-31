@@ -12,7 +12,7 @@ bool initData()
             SDL_WINDOWPOS_UNDEFINED,
             SDL_WINDOWPOS_UNDEFINED,
             SCREEN_WIDTH, SCREEN_HEIGHT,
-            SDL_WINDOW_SHOWN);
+            SDL_WINDOW_FULLSCREEN);
 
         if (g_window == NULL)
             success = false;
@@ -46,6 +46,7 @@ Game::~Game()
 
 bool Game::init()
 {
+    srand(time(0));
     if (!initData())
         return false;
     return true;
@@ -55,7 +56,6 @@ bool Game::loadResources()
 {
     gameMap.loadMap("map/map02.dat");
     gameMap.loadTiles(g_screen);
-    heart_texture = IMG_LoadTexture(g_screen, "player/heart.png");
 
     if (!player.loadImg("player/player_idle.png", g_screen))
         return false;
@@ -64,18 +64,35 @@ bool Game::loadResources()
     if (!loadThreats())
         return false;
 
+    if (!loadLifeItem())
+        return false;
+
+    heart_texture = IMG_LoadTexture(g_screen, "player/heart.png");
     if (!heart_texture)
     {
         cerr << "Fail to load heart image!";
         return false;
     }
 
+    timerFont = TTF_OpenFont("data/font.ttf", 24); 
+    if (!timerFont) {
+        printf("Failed to load font! SDL_ttf Error: %s\n", TTF_GetError());
+        return false;
+    }
         
     return true;
 }
 
 void Game::run()
-{
+{   
+    if (!gMusic.loadMusic("music/play_theme.mp3") || !lost_music.loadMusic("music/lost_theme.mp3") || !won_music.loadMusic("music/won_theme.mp3"))
+    {
+        return;
+    }
+
+    gMusic.play(-1);
+    gameTimer.start();
+
     while (isRunning)
     {
         fps_timer.start();
@@ -95,33 +112,56 @@ void Game::run()
 
         if (life == 0)
         {   
-            //g_time.paused();
+            gMusic.pause();
+            lost_music.play(-1);
             int action = handleGameOver();
             if (action == EXIT)
             {
                 isRunning = false;
+                lost_music.stop();
+                lost_music.freeMusic();
                 return;
             }
             else if (action == RESTART)
             {   
-                //g_time.unpaused();
+                lost_music.stop();
                 restartGame(); 
             }
         }
 
         if (player.is_won())
-        {
+        {   
+            gMusic.pause();
+            won_music.play(-1);
             int action = handlePlayerWon();
+            if (action == EXIT)
+            {
+                isRunning = false;
+                won_music.stop();
+                won_music.freeMusic();
+                return;
+            }
+            else if (action == RESTART)
+            {
+                won_music.stop();
+                restartGame();
+            }
+        }
+
+        if (isPause)
+        {
+            int action = handleGamePause();
             if (action == EXIT)
             {
                 isRunning = false;
                 return;
             }
-            else if (action == RESTART)
+            else if (action == RESUME)
             {
-                restartGame();
+                isPause = false;
             }
         }
+
     }
 }
 
@@ -132,6 +172,13 @@ void Game::handleEvents()
         if (g_event.type == SDL_QUIT)
         {
             isRunning = false;
+        }
+        if (g_event.type == SDL_KEYDOWN)
+        {
+            if (g_event.key.keysym.sym == SDLK_ESCAPE)
+            {
+                isPause = !isPause;
+            }
         }
         player.HandelInputAction(g_event, g_screen);
     }
@@ -144,7 +191,6 @@ void Game::update()
     player.DoPlayer(map_data);
     gameMap.SetMap(map_data);
     updateThreats();
-    renderThreats();
     checkCollisions();
 }
 
@@ -154,8 +200,6 @@ bool Game::loadThreats()
     threats = MakeThreatList(); // Lấy danh sách threats từ hàm MakeThreatList
     return !threats.empty(); // Kiểm tra xem có tải thành công không
 }
-
-
 void Game::renderThreats()
 {
     float cam_y = player.get_y_pos() - SCREEN_HEIGHT / 2;
@@ -163,8 +207,6 @@ void Game::renderThreats()
         threat->Show(g_screen, cam_y);
     }
 }
-
-
 void Game::updateThreats()
 {
     Map map_data = gameMap.get_map();
@@ -173,11 +215,8 @@ void Game::updateThreats()
         //cout << "Threat X: " << threat->get_x_pos() << "\n";
     }
 }
-
-
 vector<ThreatObject*> Game::MakeThreatList()
 {
-    srand(time(0));
     vector<ThreatObject*> list_threats;
     vector<string> threatFiles_left = { "threats/car01_left.png", "threats/car02_left.png", "threats/car03_left.png" };
     vector<string> threatFiles_right = { "threats/car01_right.png", "threats/car02_right.png", "threats/car03_right.png" };
@@ -238,6 +277,52 @@ vector<ThreatObject*> Game::MakeThreatList()
     return list_threats;
 }
 
+//Item
+bool Game::loadLifeItem()
+{
+    lifeItems = MakeLifeItemList();
+    return !lifeItems.empty();
+}
+void Game::renderLifeItem()
+{
+    float cam_y = player.get_y_pos() - SCREEN_HEIGHT / 2;
+    for (auto lifeItem : lifeItems) {
+        std::cout << "Position of LifeItem: (" << lifeItem->get_x_pos() << ", " << lifeItem->get_y_pos() << ")\n";
+
+        lifeItem->Show(g_screen, cam_y);
+    }
+}
+
+vector<LifeItem*> Game::MakeLifeItemList()
+{
+    vector<LifeItem*> list_life_item;
+    string mcdonald = "data/mcdonald.png";
+  
+    for (int i = 0; i < 20; i++)
+    {
+        int min_row = 5;
+        int max_row = max_map_y - 5;
+
+        int tile_x = rand() % max_map_x;
+        int tile_y = min_row + rand() % (max_row - min_row);
+
+        LifeItem* life_item = new LifeItem();
+        life_item->set_x_pos(tile_x * TILE_SIZE); 
+        life_item->set_y_pos(tile_y * TILE_SIZE);
+
+        if (!life_item->loadImg(mcdonald, g_screen)) {
+            cerr << "Failed to load life item image: " << mcdonald << endl;
+            delete life_item;
+            continue;
+        }
+
+        list_life_item.push_back(life_item);
+    }
+    
+    cout << "Total life items created: " << list_life_item.size() << endl;
+    return list_life_item;
+}
+
 
 //render
 void Game::render()
@@ -248,9 +333,28 @@ void Game::render()
     gameMap.DrawMap(g_screen);
     player.Show(g_screen);
     renderLife();
+    renderLifeItem();
     renderThreats(); 
 
-    
+
+    Uint32 elapsedTime = gameTimer.get_ticks() / 1000;
+    string timeText = "Time: " + std::to_string(elapsedTime) + "s";
+
+    SDL_Surface* textSurface = TTF_RenderText_Solid(timerFont, timeText.c_str(), textColor);
+    SDL_Texture* textTexture = SDL_CreateTextureFromSurface(g_screen, textSurface);
+
+    SDL_Rect renderQuad = { 10, 10, textSurface->w, textSurface->h }; 
+    SDL_RenderCopy(g_screen, textTexture, NULL, &renderQuad);
+
+    if (!textSurface) {
+        cerr << "Failed to render text surface! SDL_ttf Error: " << TTF_GetError() << endl;
+        return;
+    }
+
+
+    SDL_FreeSurface(textSurface);
+    SDL_DestroyTexture(textTexture);
+
     SDL_RenderPresent(g_screen);
 }
 void Game::renderLife()
@@ -260,16 +364,15 @@ void Game::renderLife()
 
     for (int i = 0; i < life; i++)
     {
-        SDL_Rect hearRect = { start_X - i * 35 , start_Y , 30 , 30 };
-        SDL_RenderCopy(g_screen, heart_texture, NULL, &hearRect);
+        SDL_Rect heartRect = { start_X - i * 35 , start_Y , 30 , 30 };
+        SDL_RenderCopy(g_screen, heart_texture, NULL, &heartRect);
     }
 }
 
 //check Collisions
 void Game::checkCollisions()
 {
-    SDL_Rect playerRect = player.GetRectFrame();
-
+    SDL_Rect playerRect = player.getHitboxRect();
     for (auto threat : threats)
     {
         SDL_Rect threatRect = threat->GetRectFrame();
@@ -278,7 +381,7 @@ void Game::checkCollisions()
         {
             life--;
             cerr << "Meo beo bi mat mot mang\n";
-
+            player.take_damage();
             isInvincible = true;
             invincibleTimer.start();
         }
@@ -289,8 +392,28 @@ void Game::checkCollisions()
             invincibleTimer.stop();
         }
     }
-}
+    for (auto it = lifeItems.begin(); it != lifeItems.end();)
+    {
+        LifeItem* item = *it;
+        SDL_Rect itemRect = item->GetRectFrame();
+        
+        itemRect.x +=32;    
+        itemRect.y +=32;
 
+        if (CheckCollision(playerRect, itemRect))
+        {
+            life++;
+            cout << "Picked up life item at (" << item->get_x_pos() << ", " << item->get_y_pos() << ")\n";
+
+            delete item;  
+            it = lifeItems.erase(it);  
+        }
+        else
+        {
+            ++it;
+        }
+    }
+}
 bool Game::CheckCollision(const SDL_Rect& object1, const SDL_Rect& object2)
 {
     int left_a = object1.x;
@@ -378,14 +501,61 @@ bool Game::CheckCollision(const SDL_Rect& object1, const SDL_Rect& object2)
     return false;
 }
 //game over
+
+int Game::handleGamePause()
+{
+    PauseScreen gamePause(g_screen);
+    if (!gamePause.init("data/Game_paused.png"))
+    {
+        cerr << "Error: Fail to load pause screen\n";
+        return EXIT;  
+    }
+
+    bool gamePauseRuning = true;
+    int action = NONE;
+
+    while (gamePauseRuning)
+    {
+        action = gamePause.handleEvent();
+
+        SDL_RenderClear(g_screen);
+        gamePause.render();
+        SDL_RenderPresent(g_screen);
+
+        if (action == RESUME || action == EXIT)
+        {
+            gamePauseRuning = false;
+        }
+    }
+
+    std::cout << "Exiting Pause Screen with action: " << action << "\n";
+    SDL_RenderClear(g_screen);
+    return action;
+}
 int Game::handleGameOver()
 {
     GameOverScreen gameOver(g_screen);
+
+
+    Uint32 elapsedTime = gameTimer.get_ticks() / 1000;
+   
+    printf("Time: %d seconds", elapsedTime);
+
     if (!gameOver.init("data/GameOver.png"))
     {
         cerr << "Error: Fail to load game over screen\n";
-        return EXIT;  // Mặc định thoát nếu không load được
+        return EXIT;
     }
+
+    TTF_Font* font = TTF_OpenFont("data/font.ttf", 40);
+    if (!font) {
+        cerr << "Failed to load font! SDL_ttf Error: " << TTF_GetError() << endl;
+        return EXIT;
+    }
+
+    std::string text = "Time: " + std::to_string(elapsedTime) + "s";
+    SDL_Color textColor = { 0, 0, 0 };
+
 
     bool gameOverRunning = true;
     int action = NONE;
@@ -396,6 +566,29 @@ int Game::handleGameOver()
 
         SDL_RenderClear(g_screen);
         gameOver.render();
+
+        SDL_Surface* textSurface = TTF_RenderText_Solid(font, text.c_str(), textColor);
+        if (!textSurface) {
+            cerr << "Failed to render text surface! SDL_ttf Error: " << TTF_GetError() << endl;
+            break;
+        }
+
+        SDL_Texture* textTexture = SDL_CreateTextureFromSurface(g_screen, textSurface);
+        if (!textTexture) {
+            cerr << "Failed to create texture! SDL Error: " << SDL_GetError() << endl;
+            SDL_FreeSurface(textSurface);
+            break;
+        }
+
+        int textW = textSurface->w;
+        int textH = textSurface->h;
+        SDL_Rect renderQuad = { (SCREEN_WIDTH - textW) / 2, 256, textW, textH };
+
+        SDL_RenderCopy(g_screen, textTexture, NULL, &renderQuad);
+
+        SDL_FreeSurface(textSurface);
+        SDL_DestroyTexture(textTexture);
+
         SDL_RenderPresent(g_screen);
 
         if (action == RESTART || action == EXIT)
@@ -407,15 +600,29 @@ int Game::handleGameOver()
 
     return action;
 }
-
 int Game::handlePlayerWon()
 {
     WonScreen won_screen(g_screen);
+
+    Uint32 elapsedTime = gameTimer.get_ticks() / 1000;
+    int score = 1000 - (elapsedTime * 10);
+    if (score < 0) score = 0;
+    printf("Time: %d seconds | Score: %d\n", elapsedTime, score);
+
     if (!won_screen.init("data/won.png"))
     {
-        cerr << "Error: Fail to load game over screen\n";
+        cerr << "Error: Fail to load won screen\n";
         return EXIT;
     }
+
+    TTF_Font* font = TTF_OpenFont("data/font.ttf", 40);
+    if (!font) {
+        cerr << "Failed to load font! SDL_ttf Error: " << TTF_GetError() << endl;
+        return EXIT;
+    }
+
+    std::string text = "Time: " + std::to_string(elapsedTime) + "s | Score: " + std::to_string(score);
+    SDL_Color textColor = { 0, 0, 0 };
 
     bool is_playe_won = true;
     int action = NONE;
@@ -426,6 +633,30 @@ int Game::handlePlayerWon()
 
         SDL_RenderClear(g_screen);
         won_screen.render();
+
+        // Render text safely
+        SDL_Surface* textSurface = TTF_RenderText_Solid(font, text.c_str(), textColor);
+        if (!textSurface) {
+            cerr << "Failed to render text surface! SDL_ttf Error: " << TTF_GetError() << endl;
+            break;
+        }
+
+        SDL_Texture* textTexture = SDL_CreateTextureFromSurface(g_screen, textSurface);
+        if (!textTexture) {
+            cerr << "Failed to create texture! SDL Error: " << SDL_GetError() << endl;
+            SDL_FreeSurface(textSurface);
+            break;
+        }
+
+        int textW = textSurface->w;
+        int textH = textSurface->h;
+        SDL_Rect renderQuad = { (SCREEN_WIDTH - textW) / 2, (SCREEN_HEIGHT - textH) / 2 + 16, textW, textH };
+
+        SDL_RenderCopy(g_screen, textTexture, NULL, &renderQuad);
+
+        SDL_FreeSurface(textSurface);
+        SDL_DestroyTexture(textTexture);
+
         SDL_RenderPresent(g_screen);
 
         if (action == RESTART || action == EXIT)
@@ -434,14 +665,30 @@ int Game::handlePlayerWon()
             is_playe_won = false;
         }
     }
+
+    TTF_CloseFont(font);
     return action;
 }
 void Game::restartGame()
 {
     life = PLAYER_LIFE;
     player.resetPosition();
-    
-    
+    gMusic.play(-1);
+
+    for (auto* threat : threats) 
+    {
+        delete threat;
+    }
+    threats.clear();
+    for (auto* item : lifeItems)
+    {
+        delete item;
+    }
+    lifeItems.clear();
+
+    gameTimer.start();
+    threats = MakeThreatList();
+    lifeItems = MakeLifeItemList();
 }
 
 void Game::clean()
@@ -458,7 +705,6 @@ void Game::clean()
         SDL_DestroyWindow(g_window);
         g_window = nullptr;
     }
-
 
     IMG_Quit();
     SDL_Quit();

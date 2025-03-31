@@ -10,7 +10,8 @@ enum ButtonType
 	HOW_TO_PLAY = 2,
 	EXIT = 3,
 	BACK_TO_MENU = 4,
-	RESTART = 5
+	RESTART = 5,
+	RESUME = 6
 };
 
 class Button
@@ -18,8 +19,10 @@ class Button
 public:
 	SDL_Rect rect;
 	string text;
-	Button (int x, int y, int w, int h, string txt);
-	void render(SDL_Renderer* renderer, TTF_Font* font);
+
+	Button(int x, int y, int w, int h, string txt);
+
+	void render(SDL_Renderer* renderer, TTF_Font* font , int mouseX , int mouseY);
 };
 
 class StartMenu : Object
@@ -85,5 +88,19 @@ public:
 	int handleEvent();
 };
 
+class PauseScreen : Object
+{
+private:
+	SDL_Renderer* renderer;
+	TTF_Font* font;
+	Button ContinueButton = Button(400, 350, 200, 50, "CONTINUE");
+	Button ExitButton = Button(400, 450, 200, 50, "EXIT");
+public:
+	PauseScreen(SDL_Renderer* ren);
+	~PauseScreen();
+	bool init(const string& path);
+	void render();
+	int handleEvent();
+};
 #endif // !START_MENU_H_
 

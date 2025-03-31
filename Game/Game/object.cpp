@@ -36,8 +36,8 @@ bool Object::loadImg(string path, SDL_Renderer* screen)
 	{
 		rect_.w = loadSurface->w;
 		rect_.h = loadSurface->h;
-		width_frame_ = (rect_.w / 8) - (TILE_SIZE / 4);
-		height_frame_ = (rect_.h) - 16 - (TILE_SIZE / 4);
+		width_frame_ = (rect_.w / 8);
+		height_frame_ = (rect_.h);
 	}
 
 	SDL_FreeSurface(loadSurface);

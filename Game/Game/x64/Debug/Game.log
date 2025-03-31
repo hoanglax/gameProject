@@ -1,48 +1,20 @@
-﻿  CommonFunc.cpp
+﻿  BoostObject.cpp
 D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(37,16): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
 D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(46,16): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
   CommonLib.h
-  MainObject.cpp
-D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(37,16): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(46,16): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-D:\UET\LTNC\gameProject\Game\Game\MainObject.cpp(132,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\MainObject.cpp(133,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\MainObject.cpp(247,17): warning C4244: '/=': conversion from 'double' to 'float', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\MainObject.cpp(248,17): warning C4244: '/=': conversion from 'double' to 'float', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\MainObject.cpp(286,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\MainObject.cpp(287,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\MainObject.cpp(289,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\MainObject.cpp(290,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\MainObject.cpp(308,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\MainObject.cpp(317,23): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\MainObject.cpp(327,45): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\MainObject.cpp(336,23): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\MainObject.cpp(345,36): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\MainObject.cpp(350,36): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\MainObject.cpp(355,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\MainObject.cpp(365,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   game.cpp
 D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(37,16): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
 D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(46,16): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
 D:\UET\LTNC\gameProject\Game\Game\ThreatsObject.h(21,61): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
 D:\UET\LTNC\gameProject\Game\Game\ThreatsObject.h(21,76): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\game.cpp(180,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\game.cpp(201,52): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\game.cpp(203,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\game.cpp(206,32): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\game.cpp(226,53): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\game.cpp(228,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\game.cpp(231,32): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  main.cpp
-D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(37,16): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(46,16): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-D:\UET\LTNC\gameProject\Game\Game\ThreatsObject.h(21,61): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
-D:\UET\LTNC\gameProject\Game\Game\ThreatsObject.h(21,76): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
-  map.cpp
-D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(37,16): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(46,16): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-  menu.cpp
-D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(37,16): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-D:\UET\LTNC\gameProject\Game\Game\CommonFunc.h(46,16): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+D:\UET\LTNC\gameProject\Game\Game\game.cpp(49,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\UET\LTNC\gameProject\Game\Game\game.cpp(240,52): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+D:\UET\LTNC\gameProject\Game\Game\game.cpp(242,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\UET\LTNC\gameProject\Game\Game\game.cpp(245,32): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\UET\LTNC\gameProject\Game\Game\game.cpp(265,53): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+D:\UET\LTNC\gameProject\Game\Game\game.cpp(267,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\UET\LTNC\gameProject\Game\Game\game.cpp(270,32): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\UET\LTNC\gameProject\Game\Game\game.cpp(310,37): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+D:\UET\LTNC\gameProject\Game\Game\game.cpp(311,37): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
   Generating Code...
   Game.vcxproj -> D:\UET\LTNC\gameProject\Game\x64\Debug\Game.exe

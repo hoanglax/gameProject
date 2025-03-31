@@ -36,45 +36,13 @@ void ThreatObject::set_clips()
 {
 	if (width_frame_ > 0 && height_frame_ > 0)
 	{
-		frame_clip_[0].x = 0;
-		frame_clip_[0].y = 0;
-		frame_clip_[0].w = width_frame_;
-		frame_clip_[0].h = height_frame_;
-
-		frame_clip_[1].x = width_frame_;
-		frame_clip_[1].y = 0;
-		frame_clip_[1].w = width_frame_;
-		frame_clip_[1].h = height_frame_;
-
-		frame_clip_[2].x = 2 * width_frame_;
-		frame_clip_[2].y = 0;
-		frame_clip_[2].w = width_frame_;
-		frame_clip_[2].h = height_frame_;
-
-		frame_clip_[3].x = 3 * width_frame_;
-		frame_clip_[3].y = 0;
-		frame_clip_[3].w = width_frame_;
-		frame_clip_[3].h = height_frame_;
-
-		frame_clip_[4].x = 4 * width_frame_;
-		frame_clip_[4].y = 0;
-		frame_clip_[4].w = width_frame_;
-		frame_clip_[4].h = height_frame_;
-
-		frame_clip_[5].x = 5 * width_frame_;
-		frame_clip_[5].y = 0;
-		frame_clip_[5].w = width_frame_;
-		frame_clip_[5].h = height_frame_;
-
-		frame_clip_[6].x = 6 * width_frame_;
-		frame_clip_[6].y = 0;
-		frame_clip_[6].w = width_frame_;
-		frame_clip_[6].h = height_frame_;
-
-		frame_clip_[7].x = 7 * width_frame_;
-		frame_clip_[7].y = 0;
-		frame_clip_[7].w = width_frame_;
-		frame_clip_[7].h = height_frame_;
+		for (int i = 0; i < 8; ++i)
+		{
+			frame_clip_[i].x = i * width_frame_;
+			frame_clip_[i].y = 0;
+			frame_clip_[i].w = width_frame_;
+			frame_clip_[i].h = height_frame_;
+		}
 	}
 }
 
@@ -92,9 +60,6 @@ void ThreatObject::Show(SDL_Renderer* des, float cam_y)
 
 		SDL_Rect* currentClip = &frame_clip_[frame_];
 		SDL_Rect renderQuad = { rect_.x, rect_.y, width_frame_, height_frame_ };
-
-		//std::cout << "Rendering threat at (" << x_pos_ << ", " << y_pos_ << ") ";
-		//std::cout << "| Texture: " << (p_object ? "OK" : "NULL") << "\n";
 
 		if (p_object == NULL) {
 			std::cerr << "ERROR: Texture is NULL, cannot render threat!\n";

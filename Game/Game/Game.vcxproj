@@ -130,6 +130,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BoostObject.cpp" />
     <ClCompile Include="CommonFunc.cpp" />
     <ClCompile Include="CommonLib.h" />
     <ClCompile Include="game.cpp" />
@@ -143,6 +144,7 @@
     <ClCompile Include="ThreatsObject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BoostObject.h" />
     <ClInclude Include="CommonFunc.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="ImpTimer.h" />

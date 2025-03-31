@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
     }
     bgMusic.play(-1);
     
-    SDL_Window* window = SDL_CreateWindow("Start menu", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    SDL_Window* window = SDL_CreateWindow("Start menu", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_FULLSCREEN);
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if (!window || !renderer) return -1;
 
@@ -81,6 +81,10 @@ int main(int argc, char* argv[])
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
+    
+    bgMusic.stop();
+    bgMusic.freeMusic();
+
 
     Game game;
     if (!game.init()) return -1;
@@ -90,10 +94,7 @@ int main(int argc, char* argv[])
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
-    //TTF_Quit();
-    bgMusic.freeMusic();
-    Mix_CloseAudio();
     SDL_Quit();
-
+    Mix_CloseAudio();
     return 0;
 }
