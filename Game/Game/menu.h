@@ -2,6 +2,7 @@
 #define START_MENU_H_
 #include "CommonLib.h"
 #include "CommonFunc.h"
+#include "SoundEffect.h"
 
 enum ButtonType
 {
@@ -11,7 +12,7 @@ enum ButtonType
 	EXIT = 3,
 	BACK_TO_MENU = 4,
 	RESTART = 5,
-	RESUME = 6
+	RESUME = 6,
 };
 
 class Button
@@ -38,7 +39,7 @@ public:
 	
 	bool init(const string& path);
 	void render();
-	int handleEvent();
+	int handleEvent(SoundEffect& click);
 };
 
 class HowToPlayScreen : Object
@@ -54,7 +55,7 @@ public:
 
 	bool init(const string& path);
 	void render();
-	int handleEvent();
+	int handleEvent(SoundEffect& click);
 };
 
 class GameOverScreen : Object
@@ -62,15 +63,15 @@ class GameOverScreen : Object
 private:
 	SDL_Renderer* renderer;
 	TTF_Font* font;
-	Button RestartButton = Button(400 , 300 , 200 , 50 , "RESTART");
-	Button ExitButton = Button(400 , 400 , 200, 50, "EXIT");
+	Button RestartButton = Button(400 , 400 , 200 , 50 , "RESTART");
+	Button ExitButton = Button(400 , 500 , 200, 50, "EXIT");
 public:
 	GameOverScreen(SDL_Renderer* ren);
 	~GameOverScreen();
 
 	bool init(const string& path);
 	void render();
-	int handleEvent();
+	int handleEvent(SoundEffect& click);
 };
 
 class WonScreen : Object
@@ -78,14 +79,14 @@ class WonScreen : Object
 private:
 	SDL_Renderer* renderer;
 	TTF_Font* font;
-	Button RestartButton = Button(400, 500, 200, 50, "RESTART");
-	Button ExitButton = Button(400, 600, 200, 50, "EXIT");
+	Button RestartButton = Button(400, 600, 200, 50, "RESTART");
+	Button ExitButton = Button(400, 700, 200, 50, "EXIT");
 public:
 	WonScreen(SDL_Renderer* ren);
 	~WonScreen();
 	bool init(const string& path);
 	void render();
-	int handleEvent();
+	int handleEvent(SoundEffect& click);
 };
 
 class PauseScreen : Object
@@ -100,7 +101,7 @@ public:
 	~PauseScreen();
 	bool init(const string& path);
 	void render();
-	int handleEvent();
+	int handleEvent(SoundEffect& click);
 };
 #endif // !START_MENU_H_
 

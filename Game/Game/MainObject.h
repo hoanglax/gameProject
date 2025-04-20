@@ -5,6 +5,7 @@
 #include "CommonFunc.h"
 #include "object.h"
 #include "ImpTimer.h"
+#include "SoundEffect.h"
 
 class MainObject : public Object
 {
@@ -23,7 +24,7 @@ public:
 
 	bool loadImg(string path, SDL_Renderer* screen);
 	void Show(SDL_Renderer* des);
-	void HandelInputAction(SDL_Event events, SDL_Renderer* screen);
+	void HandelInputAction(SDL_Event events, SDL_Renderer* screen, SoundEffect& move_sound);
 	void set_clips();
 	//move
 	void DoPlayer(Map& map_data);
@@ -37,6 +38,7 @@ public:
 	void resetPosition();
 
 	SDL_Rect getHitboxRect();
+
 	bool is_hit = false;
 	ImpTimer hitTimer;
 
@@ -44,6 +46,14 @@ public:
 	{
 		is_hit = true;
 		hitTimer.start();
+	}
+
+	bool is_picked = false;
+	ImpTimer pickedTimer;
+	void picked_item()
+	{
+		is_picked = true;
+		pickedTimer.start();
 	}
 
 private:

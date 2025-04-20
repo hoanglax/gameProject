@@ -10,6 +10,7 @@
 #include "BoostObject.h"
 #include "menu.h"
 #include "Music.h"
+#include "SoundEffect.h"
 
 class Game
 {
@@ -36,18 +37,24 @@ public:
 
     //Item
     bool loadLifeItem();
-    void updateLifeItem();
     void renderLifeItem();
     vector<LifeItem*> MakeLifeItemList();
+    bool loadScoreItem();
+    void renderScoreItem();
+    vector<ScoreItem*> MakeScoreItemList();
 
     //player
     void renderLife();
 
     //handle menu
+    int handleStartMenu();
     int handleGamePause();
     int handleGameOver();
     int handlePlayerWon();
 
+    //high score
+    void loadHighScore(const string& filename);
+    void saveHighScore(const string& filename);
 private:
     bool isRunning;
     bool isInvincible = false;
@@ -59,17 +66,29 @@ private:
     Music gMusic;
     Music lost_music;
     Music won_music;
+    Music start_music;
+    SoundEffect move_sound;
+    SoundEffect hit_sound;
+    SoundEffect buff_sound;
+    SoundEffect click_sound;
     //threats
     vector<ThreatObject*> threats;
     //player
     int life = PLAYER_LIFE;
+    int bonusScore = 0;
     SDL_Texture* heart_texture;
     //item
     vector<LifeItem*> lifeItems;
+    vector<ScoreItem*> scoreItems;
 
     ImpTimer gameTimer;
     TTF_Font* timerFont;
-    SDL_Color textColor = { 255, 255, 255 }; 
+    SDL_Color textColor = { 255, 255, 255 };
+
+    StartMenu* startMenu;
+
+    int score;
+    int highScore;
 };
 
 #endif // GAME_H

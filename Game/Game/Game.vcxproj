@@ -141,6 +141,7 @@
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="menu.cpp" />
+    <ClCompile Include="SoundEffect.cpp" />
     <ClCompile Include="ThreatsObject.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +154,7 @@
     <ClInclude Include="Music.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="menu.h" />
+    <ClInclude Include="SoundEffect.h" />
     <ClInclude Include="ThreatsObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

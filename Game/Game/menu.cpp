@@ -79,7 +79,7 @@ void StartMenu::render()
         button.render(renderer, font , mouseX , mouseY);
     }
 }
-int StartMenu::handleEvent()
+int StartMenu::handleEvent(SoundEffect& click)
 {
     SDL_Event e;
     while (SDL_PollEvent(&e))
@@ -91,7 +91,7 @@ int StartMenu::handleEvent()
 
         if (e.type == SDL_MOUSEBUTTONDOWN)
         {
-
+            click.play();
             for (int i = 0; i < buttons.size(); i++)
             {
                 if (x >= buttons[i].rect.x && x <= buttons[i].rect.x + buttons[i].rect.w &&
@@ -140,7 +140,7 @@ void HowToPlayScreen::render()
     SDL_GetMouseState(&mouseX, &mouseY);
     backButton.render(renderer, font , mouseX , mouseY);
 }
-int HowToPlayScreen::handleEvent()
+int HowToPlayScreen::handleEvent(SoundEffect& click)
 {
     SDL_Event e;
     while (SDL_PollEvent(&e))
@@ -148,7 +148,8 @@ int HowToPlayScreen::handleEvent()
         if (e.type == SDL_QUIT) return EXIT;
 
         if (e.type == SDL_MOUSEBUTTONDOWN)
-        {
+        {   
+            click.play();
             int x = e.button.x;
             int y = e.button.y;
             if (x >= backButton.rect.x && x <= backButton.rect.x + backButton.rect.w &&
@@ -203,7 +204,7 @@ void GameOverScreen::render()
     RestartButton.render(renderer, font, mouseX, mouseY);
     ExitButton.render(renderer, font, mouseX, mouseY);
 }
-int GameOverScreen::handleEvent()  
+int GameOverScreen::handleEvent(SoundEffect& click)
 {
     SDL_Event e;
     while (SDL_PollEvent(&e))
@@ -211,20 +212,18 @@ int GameOverScreen::handleEvent()
         if (e.type == SDL_QUIT) return EXIT;
 
         if (e.type == SDL_MOUSEBUTTONDOWN)
-        {
+        {   
+            click.play();
             int x = e.button.x;
             int y = e.button.y;
-            cout << "Mouse click: " << x << " " << y << endl;
             if (x >= RestartButton.rect.x && x <= RestartButton.rect.x + RestartButton.rect.w &&
                 y >= RestartButton.rect.y && y <= RestartButton.rect.y + RestartButton.rect.h)
             {
-                cout << "Restart clicked" << endl;
                 return RESTART;
             }
             else if (x >= ExitButton.rect.x && x <= ExitButton.rect.x + ExitButton.rect.w &&
-                y >= ExitButton.rect.y && y <= ExitButton.rect.y + ExitButton.rect.h)
+                     y >= ExitButton.rect.y && y <= ExitButton.rect.y + ExitButton.rect.h)
             {
-                cout << "Exit clicked" << endl;
                 return EXIT;
             }
         }
@@ -276,7 +275,7 @@ void WonScreen::render()
     ExitButton.render(renderer, font, mouseX, mouseY);
 }
 
-int WonScreen::handleEvent()
+int WonScreen::handleEvent(SoundEffect& click)
 {
     SDL_Event e;
     while (SDL_PollEvent(&e))
@@ -284,7 +283,8 @@ int WonScreen::handleEvent()
         if (e.type == SDL_QUIT) return EXIT;
 
         if (e.type == SDL_MOUSEBUTTONDOWN)
-        {
+        {   
+            click.play();
             int x = e.button.x;
             int y = e.button.y;
             cout << "Mouse click: " << x << " " << y << endl;
@@ -350,7 +350,7 @@ void PauseScreen::render()
     ExitButton.render(renderer, font, mouseX, mouseY);
 }
 
-int PauseScreen::handleEvent()
+int PauseScreen::handleEvent(SoundEffect& click)
 {
     SDL_Event e;
     while (SDL_PollEvent(&e))
@@ -358,20 +358,18 @@ int PauseScreen::handleEvent()
         if (e.type == SDL_QUIT) return EXIT;
 
         if (e.type == SDL_MOUSEBUTTONDOWN)
-        {
+        {   
+            click.play();
             int x = e.button.x;
             int y = e.button.y;
-            cout << "Mouse click: " << x << " " << y << endl;
             if (x >= ContinueButton.rect.x && x <= ContinueButton.rect.x + ContinueButton.rect.w &&
                 y >= ContinueButton.rect.y && y <= ContinueButton.rect.y + ContinueButton.rect.h)
             {
-                cout << "Continue clicked" << endl;
                 return RESUME;
             }
             else if (x >= ExitButton.rect.x && x <= ExitButton.rect.x + ExitButton.rect.w &&
                 y >= ExitButton.rect.y && y <= ExitButton.rect.y + ExitButton.rect.h)
             {
-                cout << "Exit clicked" << endl;
                 return EXIT;
             }
         }

@@ -1,6 +1,7 @@
 #include "MainObject.h"
 
 
+
 MainObject::MainObject()
 {
 	frame_ = 0;
@@ -41,7 +42,6 @@ bool MainObject::loadImg(string path, SDL_Renderer* screen)
 	}
 	return ret;
 }
-
 
 void MainObject::set_clips()
 {
@@ -86,13 +86,31 @@ void MainObject::Show(SDL_Renderer* des)
 			SDL_SetTextureColorMod(p_object, 255, 255, 255); 
 		}
 	}
-	else
+	else if (is_hit) 
 	{
-		SDL_SetTextureColorMod(p_object, 255, 255, 255);  
+		SDL_SetTextureColorMod(p_object, 255, 255, 255);
 		if (hitTimer.get_ticks() >= 1000)
 		{
 			is_hit = false;
 		}
+	}
+
+	if (is_picked && pickedTimer.get_ticks() < 100)
+	{
+		SDL_SetTextureColorMod(p_object, 0, 255, 0); 
+	}
+	else if (is_picked) 
+	{
+		SDL_SetTextureColorMod(p_object, 255, 255, 255);
+		if (pickedTimer.get_ticks() >= 100)
+		{
+			is_picked = false;
+		}
+	}
+
+	if (!is_hit && !is_picked)
+	{
+		SDL_SetTextureColorMod(p_object, 255, 255, 255);
 	}
 
 	if (input_type_.left_ == 1 ||
@@ -122,8 +140,11 @@ void MainObject::Show(SDL_Renderer* des)
 	SDL_RenderCopy(des, p_object, current_clip, &renderQuad);
 }
 
-void MainObject::HandelInputAction(SDL_Event events, SDL_Renderer* screen)
+void MainObject::HandelInputAction(SDL_Event events, SDL_Renderer* screen, SoundEffect& move_sound)
 {
+	static Uint32 last_move_sound_time = 0;
+	Uint32 current_time = SDL_GetTicks();
+
 	if (events.type == SDL_KEYDOWN)
 	{
 		if (events.key.keysym.sym == SDLK_d)
@@ -134,6 +155,11 @@ void MainObject::HandelInputAction(SDL_Event events, SDL_Renderer* screen)
 			input_type_.left_ = 0;
 			input_type_.up_ = 0;
 			input_type_.down_ = 0;
+
+			if (current_time - last_move_sound_time > 200) {
+				move_sound.play();
+				last_move_sound_time = current_time;
+			}
 		}
 		if (events.key.keysym.sym == SDLK_a)
 		{
@@ -143,6 +169,11 @@ void MainObject::HandelInputAction(SDL_Event events, SDL_Renderer* screen)
 			input_type_.right_ = 0;
 			input_type_.up_ = 0;
 			input_type_.down_ = 0;
+
+			if (current_time - last_move_sound_time > 200) {
+				move_sound.play();
+				last_move_sound_time = current_time;
+			}
 		}
 		if (events.key.keysym.sym == SDLK_w)
 		{
@@ -152,6 +183,11 @@ void MainObject::HandelInputAction(SDL_Event events, SDL_Renderer* screen)
 			input_type_.left_ = 0;
 			input_type_.right_ = 0;
 			input_type_.down_ = 0;
+
+			if (current_time - last_move_sound_time > 200) {
+				move_sound.play();
+				last_move_sound_time = current_time;
+			}
 		}
 		if (events.key.keysym.sym == SDLK_s)
 		{
@@ -161,12 +197,18 @@ void MainObject::HandelInputAction(SDL_Event events, SDL_Renderer* screen)
 			input_type_.left_ = 0;
 			input_type_.up_ = 0;
 			input_type_.right_ = 0;
+
+			if (current_time - last_move_sound_time > 200) {
+				move_sound.play();
+				last_move_sound_time = current_time;
+			}
 		}
 		if (events.key.keysym.sym == SDLK_LSHIFT)
 		{
 			status_ = RUN;
 			isRunning = true;
 			input_type_.run_ = 1;
+			move_sound.play();
 		}
 	}
 	if (events.type == SDL_KEYUP)
@@ -363,7 +405,7 @@ void MainObject::resetPosition()
 	x_val_ = 0;
 	y_val_ = 0;
 
-	status_ = -1;
+	status_ = WALK_DOWN;
 	isRunning = false;
 	is_won_ = false;
 
@@ -372,6 +414,7 @@ void MainObject::resetPosition()
 	input_type_.up_ = 0;
 	input_type_.down_ = 0;
 	input_type_.run_ = 0;
+
 }
 
 SDL_Rect MainObject::getHitboxRect()
