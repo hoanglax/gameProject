@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "D:\\UET\\LTNC\\gameProject\\Game\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|D:\\UET\\LTNC\\gameProject\\Game\\Game\\map.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|solutionrelative:Game\\map.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|D:\\UET\\LTNC\\gameProject\\Game\\Game\\map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|solutionrelative:Game\\map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|D:\\UET\\LTNC\\gameProject\\Game\\Game\\MainObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|solutionrelative:Game\\MainObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|D:\\UET\\LTNC\\gameProject\\Game\\Game\\game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|solutionrelative:Game\\game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -27,10 +39,6 @@
       "RelativeMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|solutionrelative:Game\\SoundEffect.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|D:\\UET\\LTNC\\gameProject\\Game\\Game\\MainObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|solutionrelative:Game\\MainObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|D:\\UET\\LTNC\\gameProject\\Game\\Game\\object.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DB9BD906-1899-4B84-B0DD-A68C039F0036}|Game\\Game.vcxproj|solutionrelative:Game\\object.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
@@ -42,11 +50,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "map.cpp",
+              "DocumentMoniker": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\map.cpp",
+              "RelativeDocumentMoniker": "Game\\map.cpp",
+              "ToolTip": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\map.cpp",
+              "RelativeToolTip": "Game\\map.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-22T06:50:19.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "map.h",
+              "DocumentMoniker": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\map.h",
+              "RelativeDocumentMoniker": "Game\\map.h",
+              "ToolTip": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\map.h",
+              "RelativeToolTip": "Game\\map.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-22T06:50:11.856Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "menu.h",
               "DocumentMoniker": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\menu.h",
               "RelativeDocumentMoniker": "Game\\menu.h",
@@ -54,12 +88,11 @@
               "RelativeToolTip": "Game\\menu.h",
               "ViewState": "AQIAAEsAAAAAAAAAAAAAAGsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-20T03:00:22.028Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T03:00:22.028Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "menu.cpp",
               "DocumentMoniker": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\menu.cpp",
               "RelativeDocumentMoniker": "Game\\menu.cpp",
@@ -67,25 +100,24 @@
               "RelativeToolTip": "Game\\menu.cpp",
               "ViewState": "AQIAAB0BAAAAAAAAAAAAAHYBAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-20T03:00:19.975Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T03:00:19.975Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "MainObject.cpp",
               "DocumentMoniker": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\MainObject.cpp",
               "RelativeDocumentMoniker": "Game\\MainObject.cpp",
               "ToolTip": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\MainObject.cpp",
               "RelativeToolTip": "Game\\MainObject.cpp",
-              "ViewState": "AQIAAMAAAAAAAAAAAAAAANIAAAAVAAAA",
+              "ViewState": "AQIAAHEBAAAAAAAAAAAAANIAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-04-20T02:35:35.475Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "game.h",
               "DocumentMoniker": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\game.h",
               "RelativeDocumentMoniker": "Game\\game.h",
@@ -93,25 +125,24 @@
               "RelativeToolTip": "Game\\game.h",
               "ViewState": "AQIAAD8AAAAAAAAAAAAAAEgAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-20T01:53:22.877Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T01:53:22.877Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "game.cpp",
               "DocumentMoniker": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\game.cpp",
               "RelativeDocumentMoniker": "Game\\game.cpp",
               "ToolTip": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\game.cpp",
               "RelativeToolTip": "Game\\game.cpp",
-              "ViewState": "AQIAAEkDAAAAAAAAAAApwHMDAAAAAAAA",
+              "ViewState": "AQIAANYDAAAAAAAAAAAAAGQAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-04-20T01:48:16.542Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "object.h",
               "DocumentMoniker": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\object.h",
               "RelativeDocumentMoniker": "Game\\object.h",
@@ -119,12 +150,11 @@
               "RelativeToolTip": "Game\\object.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-31T16:10:00.323Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-31T16:10:00.323Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "SoundEffect.cpp",
               "DocumentMoniker": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\SoundEffect.cpp",
               "RelativeDocumentMoniker": "Game\\SoundEffect.cpp",
@@ -132,12 +162,11 @@
               "RelativeToolTip": "Game\\SoundEffect.cpp",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAACUAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-20T01:40:43.341Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T01:40:43.341Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "SoundEffect.h",
               "DocumentMoniker": "D:\\UET\\LTNC\\gameProject\\Game\\Game\\SoundEffect.h",
               "RelativeDocumentMoniker": "Game\\SoundEffect.h",
@@ -145,8 +174,7 @@
               "RelativeToolTip": "Game\\SoundEffect.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-20T01:40:35.498Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T01:40:35.498Z"
             }
           ]
         }

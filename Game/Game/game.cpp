@@ -98,7 +98,7 @@ bool Game::init()
 
 bool Game::loadResources()
 {
-    gameMap.loadMap("map/map02.dat");
+    gameMap.loadMap("map/map01.dat");
     gameMap.loadTiles(g_screen);
 
     if (!player.loadImg("player/player_idle.png", g_screen))
@@ -822,6 +822,7 @@ int Game::handlePlayerWon()
     int score = 1000 - (elapsedTime * 10);
     if (score < 0) score = 0;
     score += bonusScore;
+    score += life * 100;
 
     int highScore = 0;
     std::ifstream infile("data/highscore.txt");
