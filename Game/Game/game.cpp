@@ -25,7 +25,7 @@ bool initData()
                     SDL_WINDOWPOS_UNDEFINED,
                     SDL_WINDOWPOS_UNDEFINED,
                     SCREEN_WIDTH, SCREEN_HEIGHT,
-                    SDL_WINDOW_FULLSCREEN);
+                    SDL_WINDOW_SHOWN);
     }
     if (g_window == NULL)
         success = false;
