@@ -808,7 +808,6 @@ int Game::handleGameOver()
 
         if (action == RESTART || action == EXIT)
         {
-            cerr << "Game Over action: " << action << endl;
             gameOverRunning = false;
         }
     }
