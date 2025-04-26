@@ -9,6 +9,7 @@ Một game 2D top-down nơi bạn điều khiển mèo cam băng qua đường, 
 - Thu thập đồ ăn để tăng mạng và tăng điểm
 - Chạm tới vạch đích sẽ chiến thắng
 - Hết mạng sẽ thua
+- Cơ chế hoạt họa sinh 
 - Cơ chế lưu điểm cao, sẽ lưu điểm cao nhất của người chơi
 - Cơ chế UI đơn giản, dễ sử dụng
 - Hệ thống nhạc nền và hiệu ứng âm thanh sống động
@@ -46,6 +47,6 @@ Một game 2D top-down nơi bạn điều khiển mèo cam băng qua đường, 
 - Một số website:
  - https://phattrienphanmem123az.com/
  - https://lazyfoo.net/tutorials/SDL/
-- Một số kênh Youtube: codergopher, The Builder, ...
+- Một số kênh Youtube: codergopher, The Builder, series video hướng dẫn: (https://www.youtube.com/watch?v=q1WzniyeGTU&list=PLR7NDiX0QsfQQ2iFXsXepwH46wf3D4Y4C)
 - Một số website âm thanh hình ảnh: canva.com , itch.io, Freesound.org, ...
 - Trong quá trình làm game, mình có gặp một số bug khó và do chưa có kinh nghiệm trong việc debug nên có sử dụng AI hỗ trợ.
