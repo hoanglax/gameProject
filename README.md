@@ -3,16 +3,21 @@
 Một game 2D top-down nơi bạn điều khiển mèo cam băng qua đường, tránh xe cộ, thu thập đồ ăn, chạm tới vách đích. Game được viết bằng **SDL2** và chạy tốt trên **Windows**. Càng đi nhanh, điểm càng cao!
 
 ## Tính năng chính
-
-- Cơ chế điều khiển bằng bàn phím
-- Va chạm với xe cộ sẽ mất mạng ❤️
-- Thu thập đồ ăn để tăng mạng và tăng điểm
-- Chạm tới vạch đích sẽ chiến thắng
-- Hết mạng sẽ thua
-- Cơ chế hoạt họa sinh 
-- Cơ chế lưu điểm cao, sẽ lưu điểm cao nhất của người chơi
-- Cơ chế UI đơn giản, dễ sử dụng
-- Hệ thống nhạc nền và hiệu ứng âm thanh sống động
+- Animation
+- Texture
+- Background
+- Event bàn phím
+- Event chuột
+- Xử lí va chạm
+- Tính điểm
+- Lưu điểm cao nhất
+- Sound
+- Font
+- Menu
+- Pause/Resume
+- Startus bar / lives
+- Buff item, buff effect
+- Background music
 
 ## Hình ảnh minh họa
 
