@@ -41,12 +41,13 @@ Một game 2D top-down nơi bạn điều khiển mèo cam băng qua đường, 
   - Case 2: Object2 nhỏ hơn Object1 → kiểm tra ngược lại.
   - Case 3: Hai object bằng nhau → so sánh tọa độ.
  
-  ### Hệ thống bản đồ (Tile map)
+ ### Hệ thống bản đồ (Tile map)
   - Game sử dụng bản đồ tile-based để hiển thị nền, đường đi và vật thể.
-   - loadMap() đọc dữ liệu bản đồ từ file .dat, lưu các tile vào ma trận.
-   - loadTiles() nạp ảnh các tile (ví dụ: đường, vỉa hè,...) từ thư mục map/.
-   - DrawMap() vẽ phần bản đồ hiển thị trên màn hình dựa vào vị trí camera (start_x, start_y).
- 
+  - loadMap() đọc dữ liệu bản đồ từ file .dat, lưu các tile vào ma trận.
+  - loadTiles() nạp ảnh các tile (ví dụ: đường, vỉa hè,...) từ thư mục map/.
+  - DrawMap() vẽ phần bản đồ hiển thị trên màn hình dựa vào vị trí camera (start_x, start_y).
+
+#### Tự đánh giá mức điểm: 8.5 - 9
 ## Các nguồn tham khảo
 - Tài liệu lập trình nâng cao.
 - Một số website:
